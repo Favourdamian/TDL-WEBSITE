@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appointment Confirmation - The Damian Label (TDL)</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #faf5f5;
+      margin: 0;
+      padding: 24px 12px;
+      color: #27272a;
+    }
+    .wrapper {
+      max-width: 580px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid #ffe4e6;
+      box-shadow: 0 10px 30px rgba(244, 63, 94, 0.08);
+    }
+    .hero-header {
+      background: linear-gradient(135deg, #fb7185 0%, #f43f5e 50%, #e11d48 100%);
+      padding: 38px 24px;
+      text-align: center;
+      color: #ffffff;
+    }
+    .hero-header h1 {
+      margin: 0 0 6px 0;
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+    }
+    .hero-header p {
+      margin: 0;
+      font-size: 14px;
+      opacity: 0.95;
+    }
+    .content-body {
+      padding: 32px 28px;
+    }
+    .status-badge {
+      display: inline-block;
+      background-color: #ecfdf5;
+      color: #065f46;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 5px 12px;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 14px;
+    }
+    .greeting {
+      font-size: 20px;
+      font-weight: 800;
+      color: #18181b;
+      margin-top: 0;
+      margin-bottom: 8px;
+    }
+    .intro-text {
+      font-size: 13px;
+      line-height: 1.6;
+      color: #52525b;
+      margin-bottom: 20px;
+    }
+    .appointment-card {
+      background-color: #fff1f2;
+      border-radius: 18px;
+      padding: 20px;
+      margin-bottom: 22px;
+      border: 1px solid #fecdd3;
+    }
+    .card-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(254, 205, 211, 0.5);
+      font-size: 13px;
+    }
+    .card-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .card-row:first-child {
+      padding-top: 0;
+    }
+    .card-label {
+      color: #71717a;
+      font-weight: 600;
+    }
+    .card-value {
+      color: #18181b;
+      font-weight: 700;
+      text-align: right;
+    }
+    .highlight-pink {
+      color: #f43f5e;
+      font-weight: 800;
+    }
+    .tips-box {
+      background-color: #fdf2f8;
+      border-left: 4px solid #f43f5e;
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 12px;
+      line-height: 1.7;
+      color: #475569;
+      margin-bottom: 22px;
+    }
+    .salon-info-box {
+      text-align: center;
+      padding: 18px;
+      border-radius: 16px;
+      background-color: #f8fafc;
+      border: 1px solid #f1f5f9;
+      font-size: 12px;
+      color: #64748b;
+    }
+    .salon-info-box h4 {
+      margin: 0 0 4px 0;
+      color: #0f172a;
+      font-size: 14px;
+    }
+    .footer-bar {
+      background-color: #09090b;
+      color: #71717a;
+      text-align: center;
+      padding: 20px;
+      font-size: 11px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <div class="hero-header">
+      <h1>THE DAMIAN LABEL</h1>
+      <p>Luxury Wig Revamping, Wigging & Nails Studio • Lagos</p>
+    </div>
+
+    <div class="content-body">
+      <div class="status-badge">✓ Appointment Confirmed</div>
+      <h2 class="greeting">Hey {{client_name}}, You're Booked! ✨</h2>
+      
+      <p class="intro-text">
+        Your booking with <strong>The Damian Label</strong> has been registered. We are ready to give your wig and nails the flawless luxury touch!
+      </p>
+
+      <div class="appointment-card">
+        <div class="card-row">
+          <span class="card-label">Booking Reference:</span>
+          <span class="card-value highlight-pink">#{{booking_id}}</span>
+        </div>
+        <div class="card-row">
+          <span class="card-label">Service Reserved:</span>
+          <span class="card-value">{{service_name}}</span>
+        </div>
+        <div class="card-row">
+          <span class="card-label">Specialist:</span>
+          <span class="card-value">{{stylist_name}}</span>
+        </div>
+        <div class="card-row">
+          <span class="card-label">Date & Drop-Off Time:</span>
+          <span class="card-value highlight-pink">{{booking_date}} at {{booking_time}}</span>
+        </div>
+        <div class="card-row">
+          <span class="card-label">Deposit (Locked):</span>
+          <span class="card-value">₦5,000</span>
+        </div>
+        <div class="card-row">
+          <span class="card-label">Estimated Balance Due:</span>
+          <span class="card-value highlight-pink">{{balance_due}}</span>
+        </div>
+      </div>
+
+      <div class="tips-box">
+        <strong>📍 Drop-Off & Delivery Guidelines:</strong><br>
+        • <strong>Drop-off Location:</strong> Ago Palace Way, Lagos.<br>
+        • <strong>Dispatch Riders:</strong> If sending via rider (Gokada, Chowdeck, Kwik), please share rider contact via WhatsApp with our studio.<br>
+        • <strong>Nails Clients:</strong> Please arrive on time for your studio session.<br>
+        • For questions or rush inquiries, WhatsApp us at <strong>0810-002-4096</strong>.
+      </div>
+
+      <div class="salon-info-box">
+        <h4>THE DAMIAN LABEL STUDIO</h4>
+        <p style="margin: 0 0 4px 0;">Ago Palace Way, Lagos, Nigeria</p>
+        <p style="margin: 0; font-weight: bold; color: #f43f5e;">
+          Call / WhatsApp: 0810-002-4096 • Instagram: @thedamianlabel
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bar">
+      <p>© 2026 The Damian Label. All rights reserved.</p>
+    </div>
+  </div>
+
+</body>
+</html>
