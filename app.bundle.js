@@ -908,6 +908,27 @@ function App() {
     };
   }, []);
 
+  // ==========================================
+  // SCROLL-REVEAL OBSERVER (sections fade/slide up on enter)
+  // ==========================================
+  useEffect(() => {
+    const revealEls = document.querySelectorAll(".reveal-on-scroll");
+    if (!revealEls.length) return;
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("reveal-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.10,
+      rootMargin: "0px 0px -40px 0px"
+    });
+    revealEls.forEach(el => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   // Social proof rotating timer
   useEffect(() => {
     const timer = setInterval(() => {
@@ -1448,20 +1469,43 @@ function App() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "sticky top-0 z-50 w-full bg-white shadow-md transition-all"
   }, /*#__PURE__*/React.createElement("aside", {
-    className: "gradient-babe text-white py-1.5 px-3 sm:px-4 text-[11px] sm:text-xs font-bold tracking-wide shadow-xs"
+    className: "gradient-babe text-white py-1.5 text-[11px] sm:text-xs font-bold tracking-wide shadow-xs overflow-hidden"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "max-w-7xl mx-auto flex items-center justify-center gap-2 whitespace-nowrap overflow-hidden text-ellipsis text-center"
+    className: "ticker-wrapper"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "ticker-track"
+  }, [0, 1].map(i => /*#__PURE__*/React.createElement("span", {
+    key: i,
+    className: "ticker-segment"
   }, /*#__PURE__*/React.createElement("span", {
-    className: "inline-block animate-pulse"
-  }, "\u2728"), /*#__PURE__*/React.createElement("span", null, "THE DAMIAN LABEL: Ago Palace Way, Lagos \u2022 Luxury Wig Revamping, Wigging & Nails"), /*#__PURE__*/React.createElement("span", {
-    className: "hidden md:inline"
-  }, "\u2022 Code: ", /*#__PURE__*/React.createElement("span", {
-    className: "underline decoration-wavy font-black"
-  }, "LAGOSBABE"), " (15% OFF)"), /*#__PURE__*/React.createElement("span", {
-    className: "hidden lg:inline"
-  }, "\u2022 0810-002-4096"), /*#__PURE__*/React.createElement("span", {
-    className: "inline-block"
-  }, "\uD83D\uDC85"))), /*#__PURE__*/React.createElement("header", {
+    className: "ticker-item"
+  }, "\u2728 THE DAMIAN LABEL \u2014 Ago Palace Way, Lagos, Nigeria"), /*#__PURE__*/React.createElement("span", {
+    className: "ticker-sep"
+  }, "\uD83D\uDC96"), /*#__PURE__*/React.createElement("span", {
+    className: "ticker-item"
+  }, "Luxury Wig Revamping & Wigging \uD83D\uDC51"), /*#__PURE__*/React.createElement("span", {
+    className: "ticker-sep"
+  }, "\uD83D\uDC96"), /*#__PURE__*/React.createElement("span", {
+    className: "ticker-item"
+  }, "Frontal Ventilation & Glueless Wigs \uD83D\uDC85"), /*#__PURE__*/React.createElement("span", {
+    className: "ticker-sep"
+  }, "\uD83D\uDC96"), /*#__PURE__*/React.createElement("span", {
+    className: "ticker-item"
+  }, "Acrylic Nails & Nail Art \uD83D\uDC85"), /*#__PURE__*/React.createElement("span", {
+    className: "ticker-sep"
+  }, "\uD83D\uDC96"), /*#__PURE__*/React.createElement("span", {
+    className: "ticker-item"
+  }, "Use code ", /*#__PURE__*/React.createElement("strong", null, "LAGOSBABE"), " for 15% OFF \u2728"), /*#__PURE__*/React.createElement("span", {
+    className: "ticker-sep"
+  }, "\uD83D\uDC96"), /*#__PURE__*/React.createElement("span", {
+    className: "ticker-item"
+  }, "\uD83D\uDCDE Call / WhatsApp: 0810-002-4096"), /*#__PURE__*/React.createElement("span", {
+    className: "ticker-sep"
+  }, "\uD83D\uDC96"), /*#__PURE__*/React.createElement("span", {
+    className: "ticker-item"
+  }, "Book your slay today \u2014 Studio open Mon\u2013Sat \uD83C\uDF38"), /*#__PURE__*/React.createElement("span", {
+    className: "ticker-sep"
+  }, "\uD83D\uDC96")))))), /*#__PURE__*/React.createElement("header", {
     className: "glass-nav relative z-30"
   }, /*#__PURE__*/React.createElement("div", {
     className: "max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-2 sm:gap-4"
@@ -1576,7 +1620,7 @@ function App() {
       textShadow: '0 1px 2px rgba(0, 0, 0, 0.35)'
     }
   }, "Book Slay \u2728")))))), /*#__PURE__*/React.createElement("section", {
-    className: "relative pt-10 pb-20 overflow-hidden"
+    className: "relative pt-10 pb-20 overflow-hidden reveal-on-scroll"
   }, /*#__PURE__*/React.createElement("div", {
     className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
   }, /*#__PURE__*/React.createElement("div", {
@@ -1689,7 +1733,7 @@ function App() {
     className: "text-[11px] text-rose-500 font-semibold truncate"
   }, "Call / WhatsApp: 0810-002-4096")))))))), /*#__PURE__*/React.createElement("section", {
     id: "services",
-    className: "py-20 bg-white border-t border-rose-100"
+    className: "py-20 bg-white border-t border-rose-100 reveal-on-scroll"
   }, /*#__PURE__*/React.createElement("div", {
     className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
   }, /*#__PURE__*/React.createElement("div", {
@@ -1770,7 +1814,7 @@ function App() {
     className: "px-5 py-2.5 rounded-full gradient-babe text-white text-xs font-bold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 hover:scale-105 active:scale-95 flex items-center gap-1.5 cursor-pointer"
   }, /*#__PURE__*/React.createElement("span", null, "Book This"), /*#__PURE__*/React.createElement("span", null, "\u2728"))))))))), /*#__PURE__*/React.createElement("section", {
     id: "transformations",
-    className: "py-20 bg-gradient-to-b from-white via-rose-50/40 to-white border-t border-rose-100"
+    className: "py-20 bg-gradient-to-b from-white via-rose-50/40 to-white border-t border-rose-100 reveal-on-scroll"
   }, /*#__PURE__*/React.createElement("div", {
     className: "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
   }, /*#__PURE__*/React.createElement("div", {
@@ -1889,7 +1933,7 @@ function App() {
     }, /*#__PURE__*/React.createElement("span", null, "Book This Transformation"), /*#__PURE__*/React.createElement("span", null, "\u2728")))));
   })())), /*#__PURE__*/React.createElement("section", {
     id: "quiz",
-    className: "py-16 bg-gradient-to-b from-rose-50/70 to-pink-50/40 border-y border-rose-100"
+    className: "py-16 bg-gradient-to-b from-rose-50/70 to-pink-50/40 border-y border-rose-100 reveal-on-scroll"
   }, /*#__PURE__*/React.createElement("div", {
     className: "max-w-4xl mx-auto px-4 sm:px-6"
   }, /*#__PURE__*/React.createElement("div", {
@@ -2394,7 +2438,7 @@ function App() {
     className: "font-bold text-zinc-800"
   }, formatNaira(totals.dueAtSalon)))))))))), /*#__PURE__*/React.createElement("section", {
     id: "flier-section",
-    className: "py-20 bg-white border-t border-rose-100"
+    className: "py-20 bg-white border-t border-rose-100 reveal-on-scroll"
   }, /*#__PURE__*/React.createElement("div", {
     className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
   }, /*#__PURE__*/React.createElement("div", {
@@ -2482,7 +2526,7 @@ function App() {
     className: "inline-flex items-center gap-2 px-6 py-3 rounded-full bg-zinc-950 text-white font-bold text-xs shadow-md hover:bg-black transition"
   }, /*#__PURE__*/React.createElement("span", null, "\uD83C\uDFB5"), /*#__PURE__*/React.createElement("span", null, "Follow @thedamianslabel on TikTok"))))))), /*#__PURE__*/React.createElement("section", {
     id: "reviews",
-    className: "py-20 bg-rose-50/40"
+    className: "py-20 bg-rose-50/40 reveal-on-scroll"
   }, /*#__PURE__*/React.createElement("div", {
     className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
   }, /*#__PURE__*/React.createElement("div", {

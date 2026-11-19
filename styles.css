@@ -1,6 +1,5 @@
 /* ==========================================================================
-   THE BABE BAR - LUXURY HAIR & NAILS SALON
-   Custom Styles, Glassmorphism & Animations
+   THE DAMIAN LABEL (TDL) — Custom Styles, Animations & Transitions
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Italiana&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
@@ -39,6 +38,87 @@ body {
 *, *::before, *::after {
   box-sizing: border-box;
 }
+
+/* ============================================================
+   ANNOUNCEMENT TICKER — Infinite Marquee Scroll
+   ============================================================ */
+
+.ticker-wrapper {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: tickerScroll 38s linear infinite;
+  will-change: transform;
+}
+
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+.ticker-segment {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  white-space: nowrap;
+  padding-right: 0;
+}
+
+.ticker-item {
+  display: inline-block;
+  padding: 0 18px;
+  white-space: nowrap;
+}
+
+.ticker-sep {
+  display: inline-block;
+  opacity: 0.7;
+  font-size: 0.75em;
+}
+
+@keyframes tickerScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ============================================================
+   SCROLL REVEAL — Fade + Slide Up on Section Enter
+   ============================================================ */
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(48px);
+  transition:
+    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered child reveal for cards/items inside revealed sections */
+.reveal-on-scroll.reveal-visible > * {
+  animation: fadeSlideUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 .font-serif-lux {
   font-family: var(--font-serif);

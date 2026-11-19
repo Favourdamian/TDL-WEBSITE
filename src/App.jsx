@@ -716,6 +716,27 @@ function App() {
     };
   }, []);
 
+  // ==========================================
+  // SCROLL-REVEAL OBSERVER (sections fade/slide up on enter)
+  // ==========================================
+  useEffect(() => {
+    const revealEls = document.querySelectorAll(".reveal-on-scroll");
+    if (!revealEls.length) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("reveal-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.10, rootMargin: "0px 0px -40px 0px" }
+    );
+    revealEls.forEach(el => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   // Social proof rotating timer
   useEffect(() => {
     const timer = setInterval(() => {
@@ -1250,14 +1271,30 @@ function App() {
     <div className="min-h-screen flex flex-col justify-between overflow-x-hidden w-full max-w-full">
       {/* UNIFIED STICKY HEADER - FULLY VISIBLE & PINNED ON SCROLL */}
       <div className="sticky top-0 z-50 w-full bg-white shadow-md transition-all">
-        {/* 1. TOP ANNOUNCEMENT TICKER */}
-        <aside className="gradient-babe text-white py-1.5 px-3 sm:px-4 text-[11px] sm:text-xs font-bold tracking-wide shadow-xs">
-          <div className="max-w-7xl mx-auto flex items-center justify-center gap-2 whitespace-nowrap overflow-hidden text-ellipsis text-center">
-            <span className="inline-block animate-pulse">✨</span>
-            <span>THE DAMIAN LABEL: Ago Palace Way, Lagos • Luxury Wig Revamping, Wigging &amp; Nails</span>
-            <span className="hidden md:inline">• Code: <span className="underline decoration-wavy font-black">LAGOSBABE</span> (15% OFF)</span>
-            <span className="hidden lg:inline">• 0810-002-4096</span>
-            <span className="inline-block">💅</span>
+        {/* 1. TOP ANNOUNCEMENT TICKER - INFINITE MARQUEE SCROLL */}
+        <aside className="gradient-babe text-white py-1.5 text-[11px] sm:text-xs font-bold tracking-wide shadow-xs overflow-hidden">
+          <div className="ticker-wrapper">
+            <div className="ticker-track">
+              {/* Duplicated for seamless loop */}
+              {[0,1].map(i => (
+                <span key={i} className="ticker-segment">
+                  <span className="ticker-item">✨ THE DAMIAN LABEL — Ago Palace Way, Lagos, Nigeria</span>
+                  <span className="ticker-sep">💖</span>
+                  <span className="ticker-item">Luxury Wig Revamping &amp; Wigging 👑</span>
+                  <span className="ticker-sep">💖</span>
+                  <span className="ticker-item">Frontal Ventilation &amp; Glueless Wigs 💅</span>
+                  <span className="ticker-sep">💖</span>
+                  <span className="ticker-item">Acrylic Nails &amp; Nail Art 💅</span>
+                  <span className="ticker-sep">💖</span>
+                  <span className="ticker-item">Use code <strong>LAGOSBABE</strong> for 15% OFF ✨</span>
+                  <span className="ticker-sep">💖</span>
+                  <span className="ticker-item">📞 Call / WhatsApp: 0810-002-4096</span>
+                  <span className="ticker-sep">💖</span>
+                  <span className="ticker-item">Book your slay today — Studio open Mon–Sat 🌸</span>
+                  <span className="ticker-sep">💖</span>
+                </span>
+              ))}
+            </div>
           </div>
         </aside>
 
@@ -1394,7 +1431,7 @@ function App() {
       </div>
 
       {/* 3. HERO SECTION */}
-      <section className="relative pt-10 pb-20 overflow-hidden">
+      <section className="relative pt-10 pb-20 overflow-hidden reveal-on-scroll">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
@@ -1511,7 +1548,7 @@ function App() {
       </section>
 
       {/* 4. SERVICES & PRICING MENU (NAIRA) */}
-      <section id="services" className="py-20 bg-white border-t border-rose-100">
+      <section id="services" className="py-20 bg-white border-t border-rose-100 reveal-on-scroll">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <span className="text-xs font-bold text-rose-500 uppercase tracking-widest block mb-1">Our Official Price List</span>
@@ -1588,7 +1625,7 @@ function App() {
       </section>
 
       {/* 4B. INTERACTIVE BEFORE & AFTER SLAY TRANSFORMATION STUDIO */}
-      <section id="transformations" className="py-20 bg-gradient-to-b from-white via-rose-50/40 to-white border-t border-rose-100">
+      <section id="transformations" className="py-20 bg-gradient-to-b from-white via-rose-50/40 to-white border-t border-rose-100 reveal-on-scroll">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-2xl mx-auto mb-10">
@@ -1732,7 +1769,7 @@ function App() {
       </section>
 
       {/* 5. INTERACTIVE STYLE QUIZ */}
-      <section id="quiz" className="py-16 bg-gradient-to-b from-rose-50/70 to-pink-50/40 border-y border-rose-100">
+      <section id="quiz" className="py-16 bg-gradient-to-b from-rose-50/70 to-pink-50/40 border-y border-rose-100 reveal-on-scroll">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <div className="glass-panel p-8 sm:p-12 rounded-[36px] shadow-xl border border-white">
             <div className="text-center max-w-xl mx-auto mb-8">
@@ -2297,7 +2334,7 @@ function App() {
       </section>
 
       {/* 7. OFFICIAL FLIER SHOWCASE */}
-      <section id="flier-section" className="py-20 bg-white border-t border-rose-100">
+      <section id="flier-section" className="py-20 bg-white border-t border-rose-100 reveal-on-scroll">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="text-xs font-black text-rose-500 uppercase tracking-widest block mb-1">Our Official Flier & Lookbook</span>
@@ -2374,7 +2411,7 @@ function App() {
       </section>
 
       {/* 8. REVIEWS FROM LAGOS BABES */}
-      <section id="reviews" className="py-20 bg-rose-50/40">
+      <section id="reviews" className="py-20 bg-rose-50/40 reveal-on-scroll">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="text-xs font-black text-rose-500 uppercase tracking-widest block mb-1">Client Love Notes</span>
