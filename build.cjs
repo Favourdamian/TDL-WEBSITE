@@ -22,7 +22,10 @@ ${result.code}
 
 if (typeof ReactDOM !== 'undefined' && document.getElementById('root')) {
   const root = ReactDOM.createRoot(document.getElementById('root'));
-  root.render(React.createElement(App));
+  const WrappedApp = function() {
+    return React.createElement(AppErrorBoundary, null, React.createElement(App));
+  };
+  root.render(React.createElement(WrappedApp));
 }
 })();
 `;

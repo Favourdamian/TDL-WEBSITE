@@ -1,22 +1,13 @@
 {
-  "name": "the-babe-bar-react",
+  "name": "the-damian-label",
   "private": true,
   "version": "1.0.0",
-  "type": "module",
-  "description": "Luxury Hair & Nails Booking Web Application built with React",
+  "description": "THE DAMIAN LABEL - Luxury Wig Revamping, Wigging & Nails Studio - Lagos Nigeria",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "echo 'Static site - no build needed'",
+    "dev": "echo 'Open index.html directly'",
+    "start": "echo 'Open index.html in browser'"
   },
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "canvas-confetti": "^1.6.0",
-    "@emailjs/browser": "^3.11.0"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-react": "^4.2.1",
-    "vite": "^5.1.4"
-  }
+  "dependencies": {},
+  "devDependencies": {}
 }

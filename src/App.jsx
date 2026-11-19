@@ -289,6 +289,36 @@ function getFormattedFutureDate(offsetDays = 0) {
 // 2. MAIN REACT APPLICATION COMPONENT
 // ==========================================
 
+// Error Boundary class so crashes don't freeze on the loading screen
+class AppErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, errorMsg: "" };
+  }
+  static getDerivedStateFromError(error) {
+    return { hasError: true, errorMsg: error && error.message ? error.message : String(error) };
+  }
+  componentDidCatch(error, info) {
+    console.error("TDL App Error:", error, info);
+  }
+  render() {
+    if (this.state.hasError) {
+      return React.createElement("div", {
+        style: { minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", background: "#faf5f5", padding: "24px", textAlign: "center" }
+      },
+        React.createElement("div", { style: { width: 56, height: 56, background: "linear-gradient(135deg,#fb7185,#e11d48)", borderRadius: 16, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 24, fontWeight: 900, color: "#fff", marginBottom: 16, margin: "0 auto 16px" } }, "TDL"),
+        React.createElement("h2", { style: { fontSize: 20, fontWeight: 900, color: "#18181b", marginBottom: 8 } }, "THE DAMIAN LABEL"),
+        React.createElement("p", { style: { color: "#e11d48", fontSize: 13, fontWeight: 700, marginBottom: 16 } }, "Something went wrong loading the studio."),
+        React.createElement("button", {
+          onClick: function() { window.location.reload(); },
+          style: { background: "linear-gradient(135deg,#e11d48,#f43f5e)", color: "#fff", border: "none", borderRadius: 50, padding: "10px 28px", fontWeight: 900, fontSize: 13, cursor: "pointer" }
+        }, "Reload Studio 💅")
+      );
+    }
+    return this.props.children;
+  }
+}
+
 function App() {
   const [activeCategory, setActiveCategory] = useState("all");
   const [step, setStep] = useState(1);
@@ -329,8 +359,7 @@ function App() {
   const [unreadCount, setUnreadCount] = useState(0);
   const [latestNotification, setLatestNotification] = useState(null);
   const [ownerNotificationSettings, setOwnerNotificationSettings] = useState(() => {
-    const stored = localStorage.getItem("tdl_owner_notifications");
-    return stored ? JSON.parse(stored) : { soundAlerts: true, desktopAlerts: true };
+    try { const stored = localStorage.getItem("tdl_owner_notifications"); return stored ? JSON.parse(stored) : { soundAlerts: true, desktopAlerts: true }; } catch(e) { return { soundAlerts: true, desktopAlerts: true }; }
   });
 
   // Style Quiz State
@@ -343,8 +372,7 @@ function App() {
   
   // Studio Availability & Working Days Management (Owner Controlled)
   const [availability, setAvailability] = useState(() => {
-    const stored = localStorage.getItem("tdl_availability");
-    return stored ? JSON.parse(stored) : DEFAULT_AVAILABILITY;
+    try { const stored = localStorage.getItem("tdl_availability"); return stored ? JSON.parse(stored) : DEFAULT_AVAILABILITY; } catch(e) { return DEFAULT_AVAILABILITY; }
   });
   const [newBlockedDateInput, setNewBlockedDateInput] = useState("");
   const [adminTab, setAdminTab] = useState("bookings"); // "bookings", "availability", "payments", "alerts"
@@ -359,15 +387,11 @@ function App() {
   const [musicVolume, setMusicVolume] = useState(0.40);
   const [isMusicMinimized, setIsMusicMinimized] = useState(false);
   const [musicTrack, setMusicTrack] = useState(() => {
-    if (typeof window !== "undefined") {
-      return localStorage.getItem("tdl_music_track") || "studio-music.wav";
-    }
+    try { if (typeof window !== "undefined") { return localStorage.getItem("tdl_music_track") || "studio-music.wav"; } } catch(e) {}
     return "studio-music.wav";
   });
   const [musicTrackTitle, setMusicTrackTitle] = useState(() => {
-    if (typeof window !== "undefined") {
-      return localStorage.getItem("tdl_music_title") || "TDL Luxury Slay Beats ✨";
-    }
+    try { if (typeof window !== "undefined") { return localStorage.getItem("tdl_music_title") || "TDL Luxury Slay Beats ✨"; } } catch(e) {}
     return "TDL Luxury Slay Beats ✨";
   });
   const musicAudioRef = useRef(null);
@@ -1238,8 +1262,8 @@ function App() {
         </aside>
 
         {/* 2. NAVIGATION BAR */}
-        <header className="glass-nav relative z-30 w-full overflow-visible">
-          <div className="w-full max-w-[1600px] mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-2 sm:gap-4 overflow-visible">
+        <header className="glass-nav relative z-30">
+          <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-2 sm:gap-4">
             
             {/* Brand Logo */}
             <a href="#" className="flex items-center gap-2 flex-shrink-0 group">
@@ -1256,8 +1280,8 @@ function App() {
               </div>
             </a>
 
-            {/* Desktop Nav Links - Visible on large screens, cleanly spaced so it NEVER crowds or overflows */}
-            <nav className="hidden xl:flex items-center gap-4 2xl:gap-6 text-xs sm:text-sm font-semibold text-zinc-700 whitespace-nowrap flex-shrink min-w-0">
+            {/* Desktop Nav Links - Only on ultra-wide screens so it NEVER crowds or cuts off CTA buttons */}
+            <nav className="hidden 2xl:flex items-center gap-6 text-xs sm:text-sm font-semibold text-zinc-700 whitespace-nowrap flex-shrink-0">
               <a href="#services" className="hover:text-rose-600 transition">Services &amp; Pricing</a>
               <a href="#transformations" className="hover:text-rose-600 transition">Before &amp; After ✨</a>
               <a href="#booking" className="hover:text-rose-600 transition">Book Online</a>
@@ -1266,42 +1290,45 @@ function App() {
               <a href="#reviews" className="hover:text-rose-600 transition">Reviews</a>
             </nav>
 
-            {/* Right Action Controls - 100% Fully Visible, Spacious & Guaranteed Never Cut Off */}
-            <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0 whitespace-nowrap pr-1 sm:pr-2">
-              {/* Instagram - Sleek Icon Badge */}
+            {/* Right Action Controls - 100% Fully Visible & Never Cut Off */}
+            <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0 whitespace-nowrap">
+              {/* Instagram Link */}
               <a 
                 href={SALON_INFO.instagramUrl} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="hidden sm:flex w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-amber-500 hover:opacity-90 hover:scale-105 active:scale-95 text-white text-xs font-bold shadow-xs transition items-center justify-center flex-shrink-0"
+                className="w-8 h-8 sm:w-9 sm:h-9 2xl:w-auto 2xl:px-3 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-amber-500 hover:opacity-90 text-white text-xs font-bold shadow-xs transition flex items-center justify-center gap-1 flex-shrink-0"
                 title="Follow @the_damian_label on Instagram">
                 <span>📸</span>
+                <span className="hidden 2xl:inline">Instagram</span>
               </a>
 
-              {/* TikTok - Sleek Icon Badge */}
+              {/* TikTok Link */}
               <a 
                 href={SALON_INFO.tiktokUrl} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="hidden sm:flex w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-zinc-950 hover:bg-black hover:scale-105 active:scale-95 text-white text-xs font-bold shadow-xs transition items-center justify-center flex-shrink-0"
+                className="w-8 h-8 sm:w-9 sm:h-9 2xl:w-auto 2xl:px-3 rounded-full bg-zinc-950 hover:bg-black text-white text-xs font-bold shadow-xs transition flex items-center justify-center gap-1 flex-shrink-0"
                 title="Follow @thedamianslabel on TikTok">
                 <span>🎵</span>
+                <span className="hidden 2xl:inline">TikTok</span>
               </a>
 
-              {/* WhatsApp - Essential Lagos Direct Booking Channel */}
+              {/* WhatsApp */}
               <a 
                 href="https://wa.me/2348100024096" 
                 target="_blank" 
-                className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-emerald-500 hover:bg-emerald-600 hover:scale-105 active:scale-95 text-white text-xs font-bold shadow-xs transition flex items-center justify-center flex-shrink-0"
+                className="w-8 h-8 sm:w-9 sm:h-9 2xl:w-auto 2xl:px-3 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold shadow-xs transition flex items-center justify-center gap-1 flex-shrink-0"
                 title="Chat on WhatsApp (0810-002-4096)">
                 <span>💬</span>
+                <span className="hidden 2xl:inline">WhatsApp</span>
               </a>
 
               {/* Cute Girly Chime Button */}
               <button 
                 type="button"
                 onClick={() => { playCuteGirlySound(); showToast("Playing cute girly fairy chime! 💖✨", "success"); }} 
-                className="hidden sm:flex relative w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-pink-100 hover:bg-pink-200 text-pink-700 hover:scale-110 active:scale-95 transition border border-pink-300 items-center justify-center text-xs sm:text-sm flex-shrink-0 cursor-pointer shadow-xs animate-bounce" 
+                className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-pink-100 hover:bg-pink-200 text-pink-700 hover:scale-110 transition border border-pink-300 flex items-center justify-center text-xs sm:text-sm flex-shrink-0 cursor-pointer shadow-xs animate-bounce" 
                 title="Play Cute Girly Chime ✨">
                 💖
               </button>
@@ -1330,7 +1357,7 @@ function App() {
               <button 
                 type="button"
                 onClick={() => { setIsAdminOpen(true); setUnreadCount(0); }} 
-                className="hidden sm:flex relative w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-zinc-100 hover:bg-rose-100 text-zinc-700 hover:text-rose-600 transition border border-zinc-200 items-center justify-center text-xs sm:text-sm flex-shrink-0 cursor-pointer" 
+                className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-zinc-100 hover:bg-rose-100 text-zinc-700 hover:text-rose-600 transition border border-zinc-200 flex items-center justify-center text-xs sm:text-sm flex-shrink-0 cursor-pointer" 
                 title="Owner Portal (Private)">
                 👑
                 {unreadCount > 0 && (
@@ -1340,7 +1367,7 @@ function App() {
                 )}
               </button>
 
-              {/* Book Appointment - 100% FULL VIBRANT HOT PINK SOLID COLOR (GUARANTEED NEVER CUT OFF) */}
+              {/* Book Appointment - 100% FULL VIBRANT HOT PINK SOLID COLOR (NEVER CUT OFF) */}
               <button 
                 type="button"
                 onClick={() => { 
@@ -1352,10 +1379,10 @@ function App() {
                   background: 'linear-gradient(135deg, #e11d48 0%, #f43f5e 50%, #be123c 100%)',
                   color: '#ffffff',
                   boxShadow: '0 4px 20px rgba(225, 29, 72, 0.55), 0 0 15px rgba(244, 63, 94, 0.4)',
-                  border: '1.5px solid rgba(255, 255, 255, 0.8)',
-                  whiteSpace: 'nowrap'
+                  border: '1.5px solid rgba(255, 255, 255, 0.7)',
+                  minWidth: '130px'
                 }}
-                className="btn-book-slay-full inline-flex items-center justify-center gap-1.5 px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-white text-xs sm:text-sm font-black whitespace-nowrap cursor-pointer shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all transform flex-shrink-0 ml-1 sm:ml-2">
+                className="btn-book-slay-full inline-flex items-center justify-center gap-1.5 px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-white text-xs sm:text-sm font-black whitespace-nowrap cursor-pointer shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all transform flex-shrink-0 ml-1">
                 <span style={{ color: '#ffffff', fontWeight: 900, textShadow: '0 1px 2px rgba(0, 0, 0, 0.35)' }}>
                   Book Slay ✨
                 </span>
@@ -3101,7 +3128,7 @@ function App() {
                       onChange={(e) => {
                         const updated = { ...bankDetails, bankName: e.target.value };
                         setBankDetails(updated);
-                        localStorage.setItem("tdl_bank_d\etails", JSON.stringify(updated));
+                        localStorage.setItem("tdl_bank_details", JSON.stringify(updated));
                       }} 
                       className="w-full px-3 py-2 rounded-xl border border-zinc-200 bg-white text-xs" 
                     />
@@ -3672,4 +3699,12 @@ function App() {
 
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = App;
+}
+
+// Render with error boundary wrapper
+if (typeof ReactDOM !== 'undefined' && document.getElementById('root')) {
+  const WrappedApp = function() {
+    return React.createElement(AppErrorBoundary, null, React.createElement(App));
+  };
+  window.__TDL_APP_MOUNTED__ = true;
 }

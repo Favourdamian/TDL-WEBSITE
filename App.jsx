@@ -289,6 +289,36 @@ function getFormattedFutureDate(offsetDays = 0) {
 // 2. MAIN REACT APPLICATION COMPONENT
 // ==========================================
 
+// Error Boundary class so crashes don't freeze on the loading screen
+class AppErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, errorMsg: "" };
+  }
+  static getDerivedStateFromError(error) {
+    return { hasError: true, errorMsg: error && error.message ? error.message : String(error) };
+  }
+  componentDidCatch(error, info) {
+    console.error("TDL App Error:", error, info);
+  }
+  render() {
+    if (this.state.hasError) {
+      return React.createElement("div", {
+        style: { minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", background: "#faf5f5", padding: "24px", textAlign: "center" }
+      },
+        React.createElement("div", { style: { width: 56, height: 56, background: "linear-gradient(135deg,#fb7185,#e11d48)", borderRadius: 16, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 24, fontWeight: 900, color: "#fff", marginBottom: 16, margin: "0 auto 16px" } }, "TDL"),
+        React.createElement("h2", { style: { fontSize: 20, fontWeight: 900, color: "#18181b", marginBottom: 8 } }, "THE DAMIAN LABEL"),
+        React.createElement("p", { style: { color: "#e11d48", fontSize: 13, fontWeight: 700, marginBottom: 16 } }, "Something went wrong loading the studio."),
+        React.createElement("button", {
+          onClick: function() { window.location.reload(); },
+          style: { background: "linear-gradient(135deg,#e11d48,#f43f5e)", color: "#fff", border: "none", borderRadius: 50, padding: "10px 28px", fontWeight: 900, fontSize: 13, cursor: "pointer" }
+        }, "Reload Studio 💅")
+      );
+    }
+    return this.props.children;
+  }
+}
+
 function App() {
   const [activeCategory, setActiveCategory] = useState("all");
   const [step, setStep] = useState(1);
@@ -329,8 +359,7 @@ function App() {
   const [unreadCount, setUnreadCount] = useState(0);
   const [latestNotification, setLatestNotification] = useState(null);
   const [ownerNotificationSettings, setOwnerNotificationSettings] = useState(() => {
-    const stored = localStorage.getItem("tdl_owner_notifications");
-    return stored ? JSON.parse(stored) : { soundAlerts: true, desktopAlerts: true };
+    try { const stored = localStorage.getItem("tdl_owner_notifications"); return stored ? JSON.parse(stored) : { soundAlerts: true, desktopAlerts: true }; } catch(e) { return { soundAlerts: true, desktopAlerts: true }; }
   });
 
   // Style Quiz State
@@ -343,8 +372,7 @@ function App() {
   
   // Studio Availability & Working Days Management (Owner Controlled)
   const [availability, setAvailability] = useState(() => {
-    const stored = localStorage.getItem("tdl_availability");
-    return stored ? JSON.parse(stored) : DEFAULT_AVAILABILITY;
+    try { const stored = localStorage.getItem("tdl_availability"); return stored ? JSON.parse(stored) : DEFAULT_AVAILABILITY; } catch(e) { return DEFAULT_AVAILABILITY; }
   });
   const [newBlockedDateInput, setNewBlockedDateInput] = useState("");
   const [adminTab, setAdminTab] = useState("bookings"); // "bookings", "availability", "payments", "alerts"
@@ -359,15 +387,11 @@ function App() {
   const [musicVolume, setMusicVolume] = useState(0.40);
   const [isMusicMinimized, setIsMusicMinimized] = useState(false);
   const [musicTrack, setMusicTrack] = useState(() => {
-    if (typeof window !== "undefined") {
-      return localStorage.getItem("tdl_music_track") || "studio-music.wav";
-    }
+    try { if (typeof window !== "undefined") { return localStorage.getItem("tdl_music_track") || "studio-music.wav"; } } catch(e) {}
     return "studio-music.wav";
   });
   const [musicTrackTitle, setMusicTrackTitle] = useState(() => {
-    if (typeof window !== "undefined") {
-      return localStorage.getItem("tdl_music_title") || "TDL Luxury Slay Beats ✨";
-    }
+    try { if (typeof window !== "undefined") { return localStorage.getItem("tdl_music_title") || "TDL Luxury Slay Beats ✨"; } } catch(e) {}
     return "TDL Luxury Slay Beats ✨";
   });
   const musicAudioRef = useRef(null);
@@ -3104,7 +3128,7 @@ function App() {
                       onChange={(e) => {
                         const updated = { ...bankDetails, bankName: e.target.value };
                         setBankDetails(updated);
-                        localStorage.setItem("tdl_bank_d\etails", JSON.stringify(updated));
+                        localStorage.setItem("tdl_bank_details", JSON.stringify(updated));
                       }} 
                       className="w-full px-3 py-2 rounded-xl border border-zinc-200 bg-white text-xs" 
                     />
@@ -3675,4 +3699,12 @@ function App() {
 
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = App;
+}
+
+// Render with error boundary wrapper
+if (typeof ReactDOM !== 'undefined' && document.getElementById('root')) {
+  const WrappedApp = function() {
+    return React.createElement(AppErrorBoundary, null, React.createElement(App));
+  };
+  window.__TDL_APP_MOUNTED__ = true;
 }

@@ -385,6 +385,85 @@ function getFormattedFutureDate(offsetDays = 0) {
 // 2. MAIN REACT APPLICATION COMPONENT
 // ==========================================
 
+// Error Boundary class so crashes don't freeze on the loading screen
+class AppErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hasError: false,
+      errorMsg: ""
+    };
+  }
+  static getDerivedStateFromError(error) {
+    return {
+      hasError: true,
+      errorMsg: error && error.message ? error.message : String(error)
+    };
+  }
+  componentDidCatch(error, info) {
+    console.error("TDL App Error:", error, info);
+  }
+  render() {
+    if (this.state.hasError) {
+      return React.createElement("div", {
+        style: {
+          minHeight: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "column",
+          background: "#faf5f5",
+          padding: "24px",
+          textAlign: "center"
+        }
+      }, React.createElement("div", {
+        style: {
+          width: 56,
+          height: 56,
+          background: "linear-gradient(135deg,#fb7185,#e11d48)",
+          borderRadius: 16,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontSize: 24,
+          fontWeight: 900,
+          color: "#fff",
+          marginBottom: 16,
+          margin: "0 auto 16px"
+        }
+      }, "TDL"), React.createElement("h2", {
+        style: {
+          fontSize: 20,
+          fontWeight: 900,
+          color: "#18181b",
+          marginBottom: 8
+        }
+      }, "THE DAMIAN LABEL"), React.createElement("p", {
+        style: {
+          color: "#e11d48",
+          fontSize: 13,
+          fontWeight: 700,
+          marginBottom: 16
+        }
+      }, "Something went wrong loading the studio."), React.createElement("button", {
+        onClick: function () {
+          window.location.reload();
+        },
+        style: {
+          background: "linear-gradient(135deg,#e11d48,#f43f5e)",
+          color: "#fff",
+          border: "none",
+          borderRadius: 50,
+          padding: "10px 28px",
+          fontWeight: 900,
+          fontSize: 13,
+          cursor: "pointer"
+        }
+      }, "Reload Studio 💅"));
+    }
+    return this.props.children;
+  }
+}
 function App() {
   const [activeCategory, setActiveCategory] = useState("all");
   const [step, setStep] = useState(1);
@@ -424,11 +503,18 @@ function App() {
   const [unreadCount, setUnreadCount] = useState(0);
   const [latestNotification, setLatestNotification] = useState(null);
   const [ownerNotificationSettings, setOwnerNotificationSettings] = useState(() => {
-    const stored = localStorage.getItem("tdl_owner_notifications");
-    return stored ? JSON.parse(stored) : {
-      soundAlerts: true,
-      desktopAlerts: true
-    };
+    try {
+      const stored = localStorage.getItem("tdl_owner_notifications");
+      return stored ? JSON.parse(stored) : {
+        soundAlerts: true,
+        desktopAlerts: true
+      };
+    } catch (e) {
+      return {
+        soundAlerts: true,
+        desktopAlerts: true
+      };
+    }
   });
 
   // Style Quiz State
@@ -450,8 +536,12 @@ function App() {
 
   // Studio Availability & Working Days Management (Owner Controlled)
   const [availability, setAvailability] = useState(() => {
-    const stored = localStorage.getItem("tdl_availability");
-    return stored ? JSON.parse(stored) : DEFAULT_AVAILABILITY;
+    try {
+      const stored = localStorage.getItem("tdl_availability");
+      return stored ? JSON.parse(stored) : DEFAULT_AVAILABILITY;
+    } catch (e) {
+      return DEFAULT_AVAILABILITY;
+    }
   });
   const [newBlockedDateInput, setNewBlockedDateInput] = useState("");
   const [adminTab, setAdminTab] = useState("bookings"); // "bookings", "availability", "payments", "alerts"
@@ -465,15 +555,19 @@ function App() {
   const [musicVolume, setMusicVolume] = useState(0.40);
   const [isMusicMinimized, setIsMusicMinimized] = useState(false);
   const [musicTrack, setMusicTrack] = useState(() => {
-    if (typeof window !== "undefined") {
-      return localStorage.getItem("tdl_music_track") || "studio-music.wav";
-    }
+    try {
+      if (typeof window !== "undefined") {
+        return localStorage.getItem("tdl_music_track") || "studio-music.wav";
+      }
+    } catch (e) {}
     return "studio-music.wav";
   });
   const [musicTrackTitle, setMusicTrackTitle] = useState(() => {
-    if (typeof window !== "undefined") {
-      return localStorage.getItem("tdl_music_title") || "TDL Luxury Slay Beats ✨";
-    }
+    try {
+      if (typeof window !== "undefined") {
+        return localStorage.getItem("tdl_music_title") || "TDL Luxury Slay Beats ✨";
+      }
+    } catch (e) {}
     return "TDL Luxury Slay Beats ✨";
   });
   const musicAudioRef = useRef(null);
@@ -1368,9 +1462,9 @@ function App() {
   }, "\u2022 0810-002-4096"), /*#__PURE__*/React.createElement("span", {
     className: "inline-block"
   }, "\uD83D\uDC85"))), /*#__PURE__*/React.createElement("header", {
-    className: "glass-nav relative z-30 w-full overflow-visible"
+    className: "glass-nav relative z-30"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "w-full max-w-[1600px] mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-2 sm:gap-4 overflow-visible"
+    className: "max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-2 sm:gap-4"
   }, /*#__PURE__*/React.createElement("a", {
     href: "#",
     className: "flex items-center gap-2 flex-shrink-0 group"
@@ -1383,7 +1477,7 @@ function App() {
   }, "THE DAMIAN LABEL"), /*#__PURE__*/React.createElement("span", {
     className: "hidden sm:inline-block px-2 py-0.5 rounded-full bg-rose-100 text-rose-700 text-[10px] font-bold uppercase tracking-wider whitespace-nowrap"
   }, "Lagos"))), /*#__PURE__*/React.createElement("nav", {
-    className: "hidden xl:flex items-center gap-4 2xl:gap-6 text-xs sm:text-sm font-semibold text-zinc-700 whitespace-nowrap flex-shrink min-w-0"
+    className: "hidden 2xl:flex items-center gap-6 text-xs sm:text-sm font-semibold text-zinc-700 whitespace-nowrap flex-shrink-0"
   }, /*#__PURE__*/React.createElement("a", {
     href: "#services",
     className: "hover:text-rose-600 transition"
@@ -1403,31 +1497,37 @@ function App() {
     href: "#reviews",
     className: "hover:text-rose-600 transition"
   }, "Reviews")), /*#__PURE__*/React.createElement("div", {
-    className: "flex items-center gap-1.5 sm:gap-2 flex-shrink-0 whitespace-nowrap pr-1 sm:pr-2"
+    className: "flex items-center gap-1 sm:gap-2 flex-shrink-0 whitespace-nowrap"
   }, /*#__PURE__*/React.createElement("a", {
     href: SALON_INFO.instagramUrl,
     target: "_blank",
     rel: "noopener noreferrer",
-    className: "hidden sm:flex w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-amber-500 hover:opacity-90 hover:scale-105 active:scale-95 text-white text-xs font-bold shadow-xs transition items-center justify-center flex-shrink-0",
+    className: "w-8 h-8 sm:w-9 sm:h-9 2xl:w-auto 2xl:px-3 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-amber-500 hover:opacity-90 text-white text-xs font-bold shadow-xs transition flex items-center justify-center gap-1 flex-shrink-0",
     title: "Follow @the_damian_label on Instagram"
-  }, /*#__PURE__*/React.createElement("span", null, "\uD83D\uDCF8")), /*#__PURE__*/React.createElement("a", {
+  }, /*#__PURE__*/React.createElement("span", null, "\uD83D\uDCF8"), /*#__PURE__*/React.createElement("span", {
+    className: "hidden 2xl:inline"
+  }, "Instagram")), /*#__PURE__*/React.createElement("a", {
     href: SALON_INFO.tiktokUrl,
     target: "_blank",
     rel: "noopener noreferrer",
-    className: "hidden sm:flex w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-zinc-950 hover:bg-black hover:scale-105 active:scale-95 text-white text-xs font-bold shadow-xs transition items-center justify-center flex-shrink-0",
+    className: "w-8 h-8 sm:w-9 sm:h-9 2xl:w-auto 2xl:px-3 rounded-full bg-zinc-950 hover:bg-black text-white text-xs font-bold shadow-xs transition flex items-center justify-center gap-1 flex-shrink-0",
     title: "Follow @thedamianslabel on TikTok"
-  }, /*#__PURE__*/React.createElement("span", null, "\uD83C\uDFB5")), /*#__PURE__*/React.createElement("a", {
+  }, /*#__PURE__*/React.createElement("span", null, "\uD83C\uDFB5"), /*#__PURE__*/React.createElement("span", {
+    className: "hidden 2xl:inline"
+  }, "TikTok")), /*#__PURE__*/React.createElement("a", {
     href: "https://wa.me/2348100024096",
     target: "_blank",
-    className: "w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-emerald-500 hover:bg-emerald-600 hover:scale-105 active:scale-95 text-white text-xs font-bold shadow-xs transition flex items-center justify-center flex-shrink-0",
+    className: "w-8 h-8 sm:w-9 sm:h-9 2xl:w-auto 2xl:px-3 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold shadow-xs transition flex items-center justify-center gap-1 flex-shrink-0",
     title: "Chat on WhatsApp (0810-002-4096)"
-  }, /*#__PURE__*/React.createElement("span", null, "\uD83D\uDCAC")), /*#__PURE__*/React.createElement("button", {
+  }, /*#__PURE__*/React.createElement("span", null, "\uD83D\uDCAC"), /*#__PURE__*/React.createElement("span", {
+    className: "hidden 2xl:inline"
+  }, "WhatsApp")), /*#__PURE__*/React.createElement("button", {
     type: "button",
     onClick: () => {
       playCuteGirlySound();
       showToast("Playing cute girly fairy chime! 💖✨", "success");
     },
-    className: "hidden sm:flex relative w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-pink-100 hover:bg-pink-200 text-pink-700 hover:scale-110 active:scale-95 transition border border-pink-300 items-center justify-center text-xs sm:text-sm flex-shrink-0 cursor-pointer shadow-xs animate-bounce",
+    className: "relative w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-pink-100 hover:bg-pink-200 text-pink-700 hover:scale-110 transition border border-pink-300 flex items-center justify-center text-xs sm:text-sm flex-shrink-0 cursor-pointer shadow-xs animate-bounce",
     title: "Play Cute Girly Chime \u2728"
   }, "\uD83D\uDC96"), /*#__PURE__*/React.createElement("button", {
     type: "button",
@@ -1448,7 +1548,7 @@ function App() {
       setIsAdminOpen(true);
       setUnreadCount(0);
     },
-    className: "hidden sm:flex relative w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-zinc-100 hover:bg-rose-100 text-zinc-700 hover:text-rose-600 transition border border-zinc-200 items-center justify-center text-xs sm:text-sm flex-shrink-0 cursor-pointer",
+    className: "relative w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-zinc-100 hover:bg-rose-100 text-zinc-700 hover:text-rose-600 transition border border-zinc-200 flex items-center justify-center text-xs sm:text-sm flex-shrink-0 cursor-pointer",
     title: "Owner Portal (Private)"
   }, "\uD83D\uDC51", unreadCount > 0 && /*#__PURE__*/React.createElement("span", {
     className: "absolute -top-1 -right-1 w-4 h-4 bg-rose-600 text-white rounded-full text-[9px] font-black flex items-center justify-center animate-pulse shadow"
@@ -1465,10 +1565,10 @@ function App() {
       background: 'linear-gradient(135deg, #e11d48 0%, #f43f5e 50%, #be123c 100%)',
       color: '#ffffff',
       boxShadow: '0 4px 20px rgba(225, 29, 72, 0.55), 0 0 15px rgba(244, 63, 94, 0.4)',
-      border: '1.5px solid rgba(255, 255, 255, 0.8)',
-      whiteSpace: 'nowrap'
+      border: '1.5px solid rgba(255, 255, 255, 0.7)',
+      minWidth: '130px'
     },
-    className: "btn-book-slay-full inline-flex items-center justify-center gap-1.5 px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-white text-xs sm:text-sm font-black whitespace-nowrap cursor-pointer shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all transform flex-shrink-0 ml-1 sm:ml-2"
+    className: "btn-book-slay-full inline-flex items-center justify-center gap-1.5 px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-white text-xs sm:text-sm font-black whitespace-nowrap cursor-pointer shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all transform flex-shrink-0 ml-1"
   }, /*#__PURE__*/React.createElement("span", {
     style: {
       color: '#ffffff',
@@ -2962,7 +3062,7 @@ function App() {
         bankName: e.target.value
       };
       setBankDetails(updated);
-      localStorage.setItem("tdl_bank_d\etails", JSON.stringify(updated));
+      localStorage.setItem("tdl_bank_details", JSON.stringify(updated));
     },
     className: "w-full px-3 py-2 rounded-xl border border-zinc-200 bg-white text-xs"
   })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("label", {
@@ -3438,8 +3538,19 @@ if (typeof module !== 'undefined' && module.exports) {
   module.exports = App;
 }
 
+// Render with error boundary wrapper
+if (typeof ReactDOM !== 'undefined' && document.getElementById('root')) {
+  const WrappedApp = function () {
+    return React.createElement(AppErrorBoundary, null, React.createElement(App));
+  };
+  window.__TDL_APP_MOUNTED__ = true;
+}
+
 if (typeof ReactDOM !== 'undefined' && document.getElementById('root')) {
   const root = ReactDOM.createRoot(document.getElementById('root'));
-  root.render(React.createElement(App));
+  const WrappedApp = function() {
+    return React.createElement(AppErrorBoundary, null, React.createElement(App));
+  };
+  root.render(React.createElement(WrappedApp));
 }
 })();
