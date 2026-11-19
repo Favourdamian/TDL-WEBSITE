@@ -1,6 +1,6 @@
 const fs = require('fs');
-const babel = require('C:/Users/User/AppData/Local/Programs/Antigravity IDE/resources/app/node_modules/@babel/core');
-const presetReact = require('C:/Users/User/AppData/Local/Programs/Antigravity IDE/resources/app/node_modules/@babel/preset-react');
+const babel = require('@babel/core');
+const presetReact = require('@babel/preset-react');
 
 console.log('Compiling App.jsx to app.bundle.js...');
 

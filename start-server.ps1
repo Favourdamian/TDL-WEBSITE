@@ -6,7 +6,7 @@
 $port = 8080
 $url = "http://localhost:$port/"
 
-Write-Host "✨ Starting The Babe Bar Local Web Server at $url..." -ForegroundColor Magenta
+Write-Host "✨ Starting The Damian label Local Web Server at $url..." -ForegroundColor Magenta
 
 $listener = New-Object System.Net.HttpListener
 $listener.Prefixes.Add($url)

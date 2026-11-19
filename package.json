@@ -8,6 +8,8 @@
     "dev": "echo 'Open index.html directly'",
     "start": "echo 'Open index.html in browser'"
   },
-  "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "@babel/core": "^7.29.13",
+    "@babel/preset-react": "^7.29.7"
+  }
 }

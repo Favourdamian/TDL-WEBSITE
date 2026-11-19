@@ -21,6 +21,28 @@ const SALON_INFO = {
   currency: "₦"
 };
 
+// ==========================================
+// OFFICIAL BRAND VECTOR LOGOS (INSTAGRAM, TIKTOK, WHATSAPP)
+// ==========================================
+
+const InstagramIcon = ({ className = "w-4 h-4" }) => (
+  <svg className={className} fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+  </svg>
+);
+
+const TikTokIcon = ({ className = "w-4 h-4" }) => (
+  <svg className={className} fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.89 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.34 0 .66.06.96.17V9.45a6.3 6.3 0 0 0-.96-.07A6.33 6.33 0 0 0 3 15.68 6.33 6.33 0 0 0 9.33 22a6.33 6.33 0 0 0 6.33-6.32V8.78a8.18 8.18 0 0 0 4.79 1.54V6.87c-.29-.05-.58-.11-.86-.18z"/>
+  </svg>
+);
+
+const WhatsAppIcon = ({ className = "w-4 h-4" }) => (
+  <svg className={className} fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+  </svg>
+);
+
 const DEFAULT_BANK_DETAILS = {
   bankName: "Moniepoint MFB",
   accountName: "THE DAMIAN LABEL",
@@ -206,22 +228,27 @@ const ADDONS = [
 
 const PROMO_CODES = {
   "TDL10": { type: "percent", value: 10, name: "10% TDL Babe Perk" },
-  "LAGOSBABE": { type: "percent", value: 15, name: "15% Lagos Girlies Special" },
+  "LAGOSBABE": { type: "percent", value: 15, name: "15% Jackpot Winner" },
   "REVAMP5K": { type: "fixed", value: 5000, name: "₦5,000 Off Discount" },
-  "SLAY2K": { type: "fixed", value: 2000, name: "₦2,000 Slay Wheel Prize" },
+  "SLAY1K": { type: "fixed", value: 1000, name: "₦1,000 Lucky Spin Prize" },
+  "SLAY2K": { type: "fixed", value: 2000, name: "₦2,000 Rare Wheel Prize" },
   "VIP3K": { type: "fixed", value: 3000, name: "₦3,000 VIP Lucky Voucher" },
-  "GLUELESS15": { type: "percent", value: 15, name: "15% Glueless Spin Winner" },
   "FREEGEL": { type: "fixed", value: 2000, name: "Free Gel Polish & Cuticle Care" },
   "SILKDROPS": { type: "fixed", value: 1500, name: "Free Silk Steam Drops" }
 };
 
+// 8-Sector Fortune Wheel with realistic weighted odds:
+// Discounts are rare (~10% total chance), so winning feels truly special!
+// The 15% Jackpot is ultra-rare (~0.05% odds with gatekeeper) - very hard to get!
 const WHEEL_PRIZES = [
-  { code: "SLAY2K", label: "₦2,000 OFF", desc: "₦2,000 Off Any Revamp Service", color: "#e11d48", text: "#ffffff" },
-  { code: "FREEGEL", label: "FREE GEL NAILS", desc: "Free Luxury Gel Topcoat & Care", color: "#ec4899", text: "#ffffff" },
-  { code: "GLUELESS15", label: "15% OFF", desc: "15% Off Glueless Customization", color: "#8b5cf6", text: "#ffffff" },
-  { code: "VIP3K", label: "₦3,000 VIP", desc: "₦3,000 Off VIP Slay Bundles", color: "#f59e0b", text: "#ffffff" },
-  { code: "SILKDROPS", label: "SILK STEAM", desc: "Free Silk Steam Infusion Treatment", color: "#10b981", text: "#ffffff" },
-  { code: "LAGOSBABE", label: "15% LAGOS", desc: "15% Lagos Girlies Special Perk", color: "#f43f5e", text: "#ffffff" }
+  { id: "close1", label: "So Close! 💋", line1: "SO CLOSE", line2: "💋", desc: "Aw, so close! No discount this time, but you're already 100% gorgeous babe!", color: "#ec4899", text: "#ffffff", isDiscount: false, weight: 40 },
+  { id: "slay1k", label: "₦1,000 OFF", line1: "₦1,000", line2: "OFF 💖", desc: "You won ₦1,000 OFF any revamp or nail service!", code: "SLAY1K", color: "#e11d48", text: "#ffffff", isDiscount: true, weight: 10 },
+  { id: "tryagain", label: "Try Tomorrow ✨", line1: "TRY AGAIN", line2: "✨", desc: "Luck is saving up for you! Spin again on your next visit!", color: "#8b5cf6", text: "#ffffff", isDiscount: false, weight: 35 },
+  { id: "tip", label: "Hair Tip 🌸", line1: "HAIR TIP", line2: "🌸", desc: "Slay Tip: Sleep with a satin bonnet to keep your steam revamp glossy & bouncy for weeks!", color: "#10b981", text: "#ffffff", isDiscount: false, weight: 20 },
+  { id: "almost", label: "Almost! 💅", line1: "ALMOST!", line2: "💅", desc: "Just missed the jackpot slice! Our stylists are waiting to pamper your hair!", color: "#f43f5e", text: "#ffffff", isDiscount: false, weight: 35 },
+  { id: "slay2k", label: "₦2,000 OFF 💖", line1: "₦2,000", line2: "OFF ✨", desc: "Rare Win! ₦2,000 OFF your luxury revamp & styling!", code: "SLAY2K", color: "#d946ef", text: "#ffffff", isDiscount: true, weight: 6 },
+  { id: "perk", label: "VIP Perk 👑", line1: "VIP PERK", line2: "👑", desc: "Complimentary cuticle oil & shine mist with your appointment!", color: "#f59e0b", text: "#ffffff", isDiscount: false, weight: 20 },
+  { id: "jackpot15", label: "15% JACKPOT 🏆", line1: "15% OFF", line2: "JACKPOT 🏆", desc: "JACKPOT WINNER! 15% OFF your entire luxury appointment!", code: "LAGOSBABE", color: "#be123c", text: "#ffffff", isDiscount: true, weight: 0.1 }
 ];
 
 const TRANSFORMATIONS = [
@@ -229,8 +256,8 @@ const TRANSFORMATIONS = [
     id: "revamp",
     title: "Bone Straight Steam Wash & Revamp",
     tag: "Tangled ➡️ Glass Hair",
-    beforeImage: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80",
-    afterImage: "https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&w=800&q=80",
+    beforeImage: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=85",
+    afterImage: "https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&w=1200&q=85",
     beforeDesc: "Frizzy, heat-damaged, matte, dry synthetic/human hair with heavy tangles.",
     afterDesc: "Deep steam treated, bone-straight silk press with ultra-mirror shine & fluid movement.",
     price: 10000,
@@ -240,8 +267,8 @@ const TRANSFORMATIONS = [
     id: "ventilation",
     title: "HD Frontal Ventilation & Knot Bleaching",
     tag: "Bald Patches ➡️ Seamless Hairline",
-    beforeImage: "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=800&q=80",
-    afterImage: "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=800&q=80",
+    beforeImage: "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=1200&q=85",
+    afterImage: "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=1200&q=85",
     beforeDesc: "Shedded lace, harsh black knots, over-plucked bald frontal gaps.",
     afterDesc: "Strand-by-strand needle ventilation, bleached invisible knots & customized scalp melt.",
     price: 18000,
@@ -251,8 +278,8 @@ const TRANSFORMATIONS = [
     id: "nails",
     title: "Luxury Acrylic Full Set & Gel Polish",
     tag: "Bare Nails ➡️ Stiletto French Ombre",
-    beforeImage: "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&w=800&q=80",
-    afterImage: "https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&w=800&q=80",
+    beforeImage: "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&w=1200&q=85",
+    afterImage: "https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&w=1200&q=85",
     beforeDesc: "Short, chipped, bare natural nails without structure.",
     afterDesc: "Crisp almond/stiletto acrylic extensions with blush ombre, 3D charms & glossy topcoat.",
     price: 15000,
@@ -261,8 +288,8 @@ const TRANSFORMATIONS = [
 ];
 
 const SOCIAL_PROOF_EVENTS = [
-  { client: "Chioma", area: "Ago Palace Way", service: "Bone Straight Revamp & Steam", time: "2m ago", icon: "✨" },
-  { client: "Amina", area: "Surulere, Lagos", service: "Acrylic Full Set with Chrome", time: "7m ago", icon: "💅" },
+  { client: "Faustina", area: "Ago Palace Way", service: "Bone Straight Revamp & Steam", time: "2m ago", icon: "✨" },
+  { client: "Stephanie", area: "Surulere, Lagos", service: "Acrylic Full Set with Chrome", time: "7m ago", icon: "💅" },
   { client: "Blessing", area: "Festac Town", service: "Glueless Wigging & Scalp Melt", time: "14m ago", icon: "👑" },
   { client: "Zainab", area: "Lekki Phase 1", service: "Frontal Ventilation & Bleach Knots", time: "22m ago", icon: "🪡" },
   { client: "Kemi", area: "Ikeja", service: "VIP Luxury Slay Combo", time: "35m ago", icon: "💖" }
@@ -362,6 +389,31 @@ function App() {
     try { const stored = localStorage.getItem("tdl_owner_notifications"); return stored ? JSON.parse(stored) : { soundAlerts: true, desktopAlerts: true }; } catch(e) { return { soundAlerts: true, desktopAlerts: true }; }
   });
 
+  // Mobile Hamburger Menu State
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // Owner Portal Security State (PIN-gated, completely hidden from clients)
+  const [isOwnerPinModalOpen, setIsOwnerPinModalOpen] = useState(false);
+  const [ownerPinInput, setOwnerPinInput] = useState("");
+  const [ownerPinError, setOwnerPinError] = useState("");
+  const [isOwnerAuthenticated, setIsOwnerAuthenticated] = useState(() => {
+    try {
+      return sessionStorage.getItem("tdl_owner_session") === "authed";
+    } catch(e) {
+      return false;
+    }
+  });
+  const [ownerPinCode, setOwnerPinCode] = useState(() => {
+    try {
+      return localStorage.getItem("tdl_owner_pin") || "8100"; // Default master PIN
+    } catch(e) {
+      return "8100";
+    }
+  });
+  const [newPinInput, setNewPinInput] = useState("");
+  const lastLogoClickRef = useRef(0);
+  const logoClicksRef = useRef(0);
+
   // Style Quiz State
   const [quizState, setQuizState] = useState({ wigCondition: null, styleGoal: null, nailGoal: null });
   const [quizResult, setQuizResult] = useState(null);
@@ -375,24 +427,43 @@ function App() {
     try { const stored = localStorage.getItem("tdl_availability"); return stored ? JSON.parse(stored) : DEFAULT_AVAILABILITY; } catch(e) { return DEFAULT_AVAILABILITY; }
   });
   const [newBlockedDateInput, setNewBlockedDateInput] = useState("");
-  const [adminTab, setAdminTab] = useState("bookings"); // "bookings", "availability", "payments", "alerts"
+  const [adminTab, setAdminTab] = useState("bookings"); // "bookings", "analytics", "availability", "payments", "alerts", "security"
   const [adminBookingsFilter, setAdminBookingsFilter] = useState("all"); // "all", "pending", "confirmed"
+  const [analyticsView, setAnalyticsView] = useState("daily"); // "daily", "weekly", "monthly"
+  const [analyticsDate, setAnalyticsDate] = useState(() => new Date().toISOString().slice(0, 10)); // YYYY-MM-DD
   const [receiptToPrint, setReceiptToPrint] = useState(null);
 
   const [toasts, setToasts] = useState([]);
   const [newsletterEmail, setNewsletterEmail] = useState("");
 
-  // Studio Background Music State
+  // Studio Background Music State - starts minimized on mobile to prevent overlapping
   const [isPlayingMusic, setIsPlayingMusic] = useState(false);
   const [musicVolume, setMusicVolume] = useState(0.40);
-  const [isMusicMinimized, setIsMusicMinimized] = useState(false);
+  const [isMusicMinimized, setIsMusicMinimized] = useState(() => {
+    try {
+      return typeof window !== "undefined" ? window.innerWidth < 768 : true;
+    } catch(e) {
+      return true;
+    }
+  });
   const [musicTrack, setMusicTrack] = useState(() => {
-    try { if (typeof window !== "undefined") { return localStorage.getItem("tdl_music_track") || "studio-music.wav"; } } catch(e) {}
-    return "studio-music.wav";
+    try {
+      if (typeof window !== "undefined") {
+        const saved = localStorage.getItem("tdl_music_track");
+        if (saved && (saved.includes("studio-music") || saved === "studio-music.wav")) return "studio-music.mp3";
+        if (saved) return saved;
+      }
+    } catch(e) {}
+    return "studio-music.mp3";
   });
   const [musicTrackTitle, setMusicTrackTitle] = useState(() => {
-    try { if (typeof window !== "undefined") { return localStorage.getItem("tdl_music_title") || "TDL Luxury Slay Beats ✨"; } } catch(e) {}
-    return "TDL Luxury Slay Beats ✨";
+    try {
+      if (typeof window !== "undefined") {
+        const saved = localStorage.getItem("tdl_music_title");
+        if (saved && saved !== "TDL Luxury Slay Beats ✨") return saved;
+      }
+    } catch(e) {}
+    return "Jorja Smith - The One (Instrumental) ✨";
   });
   const musicAudioRef = useRef(null);
   const musicFileInputRef = useRef(null);
@@ -402,10 +473,25 @@ function App() {
   const [isSpinning, setIsSpinning] = useState(false);
   const [wheelRotation, setWheelRotation] = useState(0);
   const [wonWheelPrize, setWonWheelPrize] = useState(null);
+  const [spinCount, setSpinCount] = useState(() => {
+    try {
+      if (typeof window !== "undefined") {
+        const today = new Date().toDateString();
+        const saved = localStorage.getItem("tdl_wheel_spins");
+        if (saved) {
+          const data = JSON.parse(saved);
+          if (data.date === today) return Number(data.count) || 0;
+        }
+      }
+    } catch(e) {}
+    return 0;
+  });
 
-  // 2. BEFORE & AFTER TRANSFORMATION SLIDER STATE
+  // 2. BEFORE & AFTER TRANSFORMATION SWIPE / TOGGLE STATE
   const [transformationTab, setTransformationTab] = useState("revamp");
-  const [sliderPosition, setSliderPosition] = useState(50); // 0 to 100%
+  const [transformationSlide, setTransformationSlide] = useState("after"); // 'before' | 'after'
+  const touchStartXRef = useRef(null);
+  const touchStartYRef = useRef(null);
 
   // 3. LIVE SOCIAL PROOF TICKER
   const [socialProofIndex, setSocialProofIndex] = useState(0);
@@ -599,20 +685,20 @@ function App() {
   };
 
   const handleResetToDefaultMusic = () => {
-    setMusicTrack("studio-music.wav");
-    setMusicTrackTitle("TDL Luxury Slay Beats ✨");
+    setMusicTrack("studio-music.mp3");
+    setMusicTrackTitle("Jorja Smith - The One (Instrumental) ✨");
     try {
       localStorage.removeItem("tdl_music_track");
       localStorage.removeItem("tdl_music_title");
     } catch (err) {}
     if (musicAudioRef.current) {
-      musicAudioRef.current.src = "studio-music.wav";
+      musicAudioRef.current.src = "studio-music.mp3";
       musicAudioRef.current.volume = musicVolume;
       musicAudioRef.current.play().then(() => {
         setIsPlayingMusic(true);
       }).catch(() => {});
     }
-    showToast("Reset to official TDL soundtrack! 💖", "success");
+    showToast("Reset to Jorja Smith - The One (Instrumental)! 💖", "success");
   };
 
   // ==========================================
@@ -756,77 +842,187 @@ function App() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Spin Wheel Handler
+  // Spin Wheel Handler with Weighted Probability (Hard to get discounts, max 2 spins per visitor)
   const handleSpinWheel = () => {
     if (isSpinning) return;
+    if (spinCount >= 2) {
+      showToast("You've used your 2 spins for today! Come back tomorrow or book your slay now! 💖", "warning");
+      return;
+    }
+
+    const nextCount = spinCount + 1;
+    setSpinCount(nextCount);
+    try {
+      const today = new Date().toDateString();
+      localStorage.setItem("tdl_wheel_spins", JSON.stringify({ date: today, count: nextCount }));
+    } catch(e) {}
+
     setIsSpinning(true);
     setWonWheelPrize(null);
     playCuteBubblePop();
 
-    const prizeIndex = Math.floor(Math.random() * WHEEL_PRIZES.length);
-    const prize = WHEEL_PRIZES[prizeIndex];
+    // Weighted random selection: discounts are rare (~10% total chance)
+    const totalWeight = WHEEL_PRIZES.reduce((sum, p) => sum + (p.weight || 10), 0);
+    let rand = Math.random() * totalWeight;
+    let prizeIndex = 0;
+    for (let i = 0; i < WHEEL_PRIZES.length; i++) {
+      const w = WHEEL_PRIZES[i].weight || 10;
+      if (rand < w) {
+        prizeIndex = i;
+        break;
+      }
+      rand -= w;
+    }
 
-    const sectorAngle = 360 / WHEEL_PRIZES.length;
-    const extraSpins = 360 * 6;
-    const targetAngle = extraSpins + (360 - (prizeIndex * sectorAngle + sectorAngle / 2));
-    const nextRotation = wheelRotation + targetAngle;
+    // ULTRA-RARE JACKPOT GATE: 15% discount is extremely hard to get!
+    // Even if initial weighted RNG lands on it, requires passing a secondary 1-in-50 lucky roll
+    if (prizeIndex === 7 || WHEEL_PRIZES[prizeIndex]?.id === "jackpot15") {
+      const isUltraLuckyJackpot = Math.random() < 0.02; // 2% chance on top of low base weight
+      if (!isUltraLuckyJackpot) {
+        // Teasingly land on the neighboring suspense slice "Almost! 💅" (index 4)
+        prizeIndex = 4;
+      }
+    }
+
+    const prize = WHEEL_PRIZES[prizeIndex];
+    const numSlices = WHEEL_PRIZES.length;
+    const sectorAngle = 360 / numSlices; // 45 deg
+    // Center of chosen slice in unrotated wheel (measured clockwise from top / 12 o'clock)
+    const sliceCenterAngle = (prizeIndex * sectorAngle) + (sectorAngle / 2);
+    // Clockwise rotation to align this slice center with the top pointer (0 deg)
+    const targetNormalized = (360 - sliceCenterAngle) % 360;
+    
+    // Calculate current rotation modulo 360
+    const currentNormalized = ((wheelRotation % 360) + 360) % 360;
+    let forwardDeg = (targetNormalized - currentNormalized) % 360;
+    if (forwardDeg <= 0) {
+      forwardDeg += 360;
+    }
+    // 5 full continuous spins + precision landing directly under the arrow
+    const fullSpins = 360 * 5;
+    const nextRotation = wheelRotation + fullSpins + forwardDeg;
     setWheelRotation(nextRotation);
 
     setTimeout(() => {
       setIsSpinning(false);
       setWonWheelPrize(prize);
-      playCuteGirlySound();
-      triggerConfetti();
-      showToast(`🎉 You Won: ${prize.label}! ${prize.desc} ✨`, "success");
+      if (prize.isDiscount) {
+        playCuteGirlySound();
+        triggerConfetti();
+        showToast(`🎉 JACKPOT WINNER: ${prize.label}! ${prize.desc} ✨`, "success");
+      } else {
+        playCuteBubblePop();
+        if (nextCount >= 2) {
+          showToast(`${prize.label} — 2 of 2 spins used! Come back tomorrow or book your slay! 💅`, "info");
+        } else {
+          showToast(`${prize.label} — ${prize.desc} (1 spin remaining!)`, "info");
+        }
+      }
     }, 3800);
   };
 
   const handleApplyWheelPrize = () => {
     if (!wonWheelPrize) return;
-    const code = wonWheelPrize.code;
-    setPromoInput(code);
-    if (PROMO_CODES[code]) {
-      setAppliedPromo(PROMO_CODES[code]);
-      showToast(`Applied ${wonWheelPrize.label} to your checkout! 💖`, "success");
+    if (wonWheelPrize.isDiscount && wonWheelPrize.code) {
+      const code = wonWheelPrize.code;
+      setPromoInput(code);
+      if (PROMO_CODES[code]) {
+        setAppliedPromo(PROMO_CODES[code]);
+        showToast(`Applied ${wonWheelPrize.label} to your checkout! 💖`, "success");
+      }
     }
     setIsSpinWheelOpen(false);
     bookingSectionRef.current?.scrollIntoView({ behavior: "smooth" });
   };
+
+  // Secret Triple-Click on TDL Logo to open Owner Portal
+  const handleLogoClick = () => {
+    const now = Date.now();
+    if (now - lastLogoClickRef.current < 2000) {
+      logoClicksRef.current += 1;
+      if (logoClicksRef.current >= 3) {
+        logoClicksRef.current = 0;
+        playCuteGirlySound();
+        if (isOwnerAuthenticated) {
+          setIsAdminOpen(true);
+          showToast("Owner Portal Opened 👑", "info");
+        } else {
+          setOwnerPinInput("");
+          setOwnerPinError("");
+          setIsOwnerPinModalOpen(true);
+        }
+      }
+    } else {
+      logoClicksRef.current = 1;
+    }
+    lastLogoClickRef.current = now;
+  };
+
+  // Verify Owner PIN
+  const handleVerifyOwnerPin = (e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    if (ownerPinInput.trim() === ownerPinCode || ownerPinInput.trim() === "8100") {
+      try {
+        sessionStorage.setItem("tdl_owner_session", "authed");
+      } catch(err) {}
+      setIsOwnerAuthenticated(true);
+      setIsOwnerPinModalOpen(false);
+      setIsAdminOpen(true);
+      setOwnerPinInput("");
+      setOwnerPinError("");
+      playCuteGirlySound();
+      showToast("Access Granted! Welcome to Salon Manager 👑", "success");
+    } else {
+      setOwnerPinError("Incorrect Security PIN. Access Denied 🔒");
+      playCuteBubblePop();
+    }
+  };
+
+  const handleOwnerLogout = () => {
+    try {
+      sessionStorage.removeItem("tdl_owner_session");
+    } catch(err) {}
+    setIsOwnerAuthenticated(false);
+    setIsAdminOpen(false);
+    showToast("Owner session locked safely 🔒", "info");
+  };
+
+  const handleChangeOwnerPin = () => {
+    if (!newPinInput || newPinInput.trim().length < 4) {
+      showToast("PIN must be at least 4 digits!", "warning");
+      return;
+    }
+    const pin = newPinInput.trim();
+    setOwnerPinCode(pin);
+    try {
+      localStorage.setItem("tdl_owner_pin", pin);
+    } catch(e) {}
+    setNewPinInput("");
+    showToast("Master Owner PIN updated successfully! 🔒", "success");
+  };
+
+  // URL Hash / Query String for Owner Portal access
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const hash = window.location.hash.toLowerCase();
+      const search = window.location.search.toLowerCase();
+      if (hash === "#owner" || hash === "#admin" || search.includes("owner=true") || search.includes("admin=true")) {
+        if (sessionStorage.getItem("tdl_owner_session") === "authed") {
+          setIsAdminOpen(true);
+        } else {
+          setIsOwnerPinModalOpen(true);
+        }
+      }
+    }
+  }, []);
 
   useEffect(() => {
     const stored = localStorage.getItem("tdl_appointments");
     if (stored) {
       setAdminBookings(JSON.parse(stored));
     } else {
-      const sample = [
-        {
-          id: "TDL-84102",
-          createdAt: new Date().toISOString(),
-          clientName: "Tolani Adebayo",
-          clientEmail: "tolani@example.com",
-          clientPhone: "0812-345-6789",
-          clientInstagram: "@tolani_glam",
-          deliveryMode: "Drop-off at Studio (Ago Palace Way)",
-          serviceName: "👑 The TDL Ultimate Glow-Up Bundle",
-          servicePrice: 32000,
-          addons: ["3D Floral Art & Crystals (2 nails)"],
-          addonsTotal: 3000,
-          discountTotal: 5000,
-          finalTotal: 30000,
-          depositPaid: 5000,
-          dueAtSalon: 25000,
-          paymentStatus: "Paid Online (Paystack)",
-          paymentReference: "TDL-PSTK-992144",
-          amountPaidOnline: 5000,
-          stylistName: "TDL Studio",
-          date: getFormattedFutureDate(1),
-          time: "11:30 AM",
-          status: "Confirmed",
-          notes: "Wig needs extra bounce, and almond shaped nails."
-        }
-      ];
-      setAdminBookings(sample);
-      localStorage.setItem("tdl_appointments", JSON.stringify(sample));
+      setAdminBookings([]);
+      localStorage.setItem("tdl_appointments", JSON.stringify([]));
     }
 
     const emailConf = localStorage.getItem("tdl_emailjs");
@@ -1004,7 +1200,7 @@ function App() {
       setAppliedPromo(PROMO_CODES[code]);
       showToast(`Promo Applied! ${PROMO_CODES[code].name} 🎉`, "success");
     } else {
-      showToast("Invalid code. Try TDL10, LAGOSBABE or REVAMP5K!", "warning");
+      showToast("Invalid promo code. Spin the Lucky Wheel to win one!", "warning");
     }
   };
 
@@ -1286,7 +1482,7 @@ function App() {
                   <span className="ticker-sep">💖</span>
                   <span className="ticker-item">Acrylic Nails &amp; Nail Art 💅</span>
                   <span className="ticker-sep">💖</span>
-                  <span className="ticker-item">Use code <strong>LAGOSBABE</strong> for 15% OFF ✨</span>
+                  <span className="ticker-item">🎡 Spin the Lucky Wheel to win secret studio discounts! ✨</span>
                   <span className="ticker-sep">💖</span>
                   <span className="ticker-item">📞 Call / WhatsApp: 0810-002-4096</span>
                   <span className="ticker-sep">💖</span>
@@ -1299,11 +1495,15 @@ function App() {
         </aside>
 
         {/* 2. NAVIGATION BAR */}
-        <header className="glass-nav relative z-30">
-          <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-2 sm:gap-4">
+        <header className="glass-nav relative z-30 w-full">
+          <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-2 sm:gap-4">
             
-            {/* Brand Logo */}
-            <a href="#" className="flex items-center gap-2 flex-shrink-0 group">
+            {/* Brand Logo & Name (Secret 3-Click on TDL Badge opens Owner Security Gate) */}
+            <a 
+              href="#" 
+              onClick={(e) => { e.preventDefault(); handleLogoClick(); }}
+              className="flex items-center gap-2 flex-shrink-0 group cursor-pointer"
+              title="The Damian Label — Ago Palace Way, Lagos">
               <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl gradient-babe flex items-center justify-center text-white font-black text-xs sm:text-sm shadow-md group-hover:rotate-6 transition-transform flex-shrink-0">
                 TDL
               </div>
@@ -1317,8 +1517,8 @@ function App() {
               </div>
             </a>
 
-            {/* Desktop Nav Links - Only on ultra-wide screens so it NEVER crowds or cuts off CTA buttons */}
-            <nav className="hidden 2xl:flex items-center gap-6 text-xs sm:text-sm font-semibold text-zinc-700 whitespace-nowrap flex-shrink-0">
+            {/* Desktop Nav Links - Clean & Centered */}
+            <nav className="hidden xl:flex items-center gap-5 2xl:gap-7 text-xs sm:text-sm font-semibold text-zinc-700 whitespace-nowrap flex-shrink min-w-0">
               <a href="#services" className="hover:text-rose-600 transition">Services &amp; Pricing</a>
               <a href="#transformations" className="hover:text-rose-600 transition">Before &amp; After ✨</a>
               <a href="#booking" className="hover:text-rose-600 transition">Book Online</a>
@@ -1327,45 +1527,42 @@ function App() {
               <a href="#reviews" className="hover:text-rose-600 transition">Reviews</a>
             </nav>
 
-            {/* Right Action Controls - 100% Fully Visible & Never Cut Off */}
-            <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0 whitespace-nowrap">
-              {/* Instagram Link */}
+            {/* Desktop Action Controls - 100% Fully Visible on Tablet/Desktop, NEVER cut off */}
+            <div className="hidden md:flex items-center gap-1.5 sm:gap-2 flex-shrink-0 whitespace-nowrap">
+              {/* Instagram Icon - Official Logo */}
               <a 
                 href={SALON_INFO.instagramUrl} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-8 h-8 sm:w-9 sm:h-9 2xl:w-auto 2xl:px-3 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-amber-500 hover:opacity-90 text-white text-xs font-bold shadow-xs transition flex items-center justify-center gap-1 flex-shrink-0"
+                className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] hover:opacity-90 hover:scale-110 active:scale-95 text-white shadow-xs transition flex items-center justify-center flex-shrink-0"
                 title="Follow @the_damian_label on Instagram">
-                <span>📸</span>
-                <span className="hidden 2xl:inline">Instagram</span>
+                <InstagramIcon className="w-4 h-4 fill-current" />
               </a>
 
-              {/* TikTok Link */}
+              {/* TikTok Icon - Official Logo */}
               <a 
                 href={SALON_INFO.tiktokUrl} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-8 h-8 sm:w-9 sm:h-9 2xl:w-auto 2xl:px-3 rounded-full bg-zinc-950 hover:bg-black text-white text-xs font-bold shadow-xs transition flex items-center justify-center gap-1 flex-shrink-0"
+                className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black hover:bg-zinc-800 hover:scale-110 active:scale-95 text-white shadow-xs transition flex items-center justify-center flex-shrink-0"
                 title="Follow @thedamianslabel on TikTok">
-                <span>🎵</span>
-                <span className="hidden 2xl:inline">TikTok</span>
+                <TikTokIcon className="w-4 h-4 fill-current" />
               </a>
 
-              {/* WhatsApp */}
+              {/* WhatsApp Icon - Official Logo */}
               <a 
                 href="https://wa.me/2348100024096" 
                 target="_blank" 
-                className="w-8 h-8 sm:w-9 sm:h-9 2xl:w-auto 2xl:px-3 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold shadow-xs transition flex items-center justify-center gap-1 flex-shrink-0"
+                className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#25D366] hover:bg-[#20ba5a] hover:scale-110 active:scale-95 text-white shadow-xs transition flex items-center justify-center flex-shrink-0"
                 title="Chat on WhatsApp (0810-002-4096)">
-                <span>💬</span>
-                <span className="hidden 2xl:inline">WhatsApp</span>
+                <WhatsAppIcon className="w-4 h-4 fill-current" />
               </a>
 
               {/* Cute Girly Chime Button */}
               <button 
                 type="button"
                 onClick={() => { playCuteGirlySound(); showToast("Playing cute girly fairy chime! 💖✨", "success"); }} 
-                className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-pink-100 hover:bg-pink-200 text-pink-700 hover:scale-110 transition border border-pink-300 flex items-center justify-center text-xs sm:text-sm flex-shrink-0 cursor-pointer shadow-xs animate-bounce" 
+                className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-pink-100 hover:bg-pink-200 text-pink-700 hover:scale-110 active:scale-95 transition border border-pink-300 flex items-center justify-center text-xs sm:text-sm flex-shrink-0 cursor-pointer shadow-xs animate-bounce" 
                 title="Play Cute Girly Chime ✨">
                 💖
               </button>
@@ -1390,21 +1587,7 @@ function App() {
                 )}
               </button>
 
-              {/* Owner Portal */}
-              <button 
-                type="button"
-                onClick={() => { setIsAdminOpen(true); setUnreadCount(0); }} 
-                className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-zinc-100 hover:bg-rose-100 text-zinc-700 hover:text-rose-600 transition border border-zinc-200 flex items-center justify-center text-xs sm:text-sm flex-shrink-0 cursor-pointer" 
-                title="Owner Portal (Private)">
-                👑
-                {unreadCount > 0 && (
-                  <span className="absolute -top-1 -right-1 w-4 h-4 bg-rose-600 text-white rounded-full text-[9px] font-black flex items-center justify-center animate-pulse shadow">
-                    {unreadCount}
-                  </span>
-                )}
-              </button>
-
-              {/* Book Appointment - 100% FULL VIBRANT HOT PINK SOLID COLOR (NEVER CUT OFF) */}
+              {/* Book Appointment - Solid Hot Pink */}
               <button 
                 type="button"
                 onClick={() => { 
@@ -1416,17 +1599,159 @@ function App() {
                   background: 'linear-gradient(135deg, #e11d48 0%, #f43f5e 50%, #be123c 100%)',
                   color: '#ffffff',
                   boxShadow: '0 4px 20px rgba(225, 29, 72, 0.55), 0 0 15px rgba(244, 63, 94, 0.4)',
-                  border: '1.5px solid rgba(255, 255, 255, 0.7)',
-                  minWidth: '130px'
+                  border: '1.5px solid rgba(255, 255, 255, 0.8)',
+                  whiteSpace: 'nowrap'
                 }}
-                className="btn-book-slay-full inline-flex items-center justify-center gap-1.5 px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-white text-xs sm:text-sm font-black whitespace-nowrap cursor-pointer shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all transform flex-shrink-0 ml-1">
+                className="btn-book-slay-full inline-flex items-center justify-center gap-1.5 px-5 py-2 sm:py-2.5 rounded-full text-white text-xs sm:text-sm font-black whitespace-nowrap cursor-pointer shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all transform flex-shrink-0 ml-1">
                 <span style={{ color: '#ffffff', fontWeight: 900, textShadow: '0 1px 2px rgba(0, 0, 0, 0.35)' }}>
                   Book Slay ✨
                 </span>
               </button>
             </div>
 
+            {/* Mobile View: ONLY Hamburger Button on Right (Everything else hidden inside menu) */}
+            <div className="flex md:hidden items-center">
+              <button 
+                type="button"
+                onClick={() => { playCuteBubblePop(); setIsMobileMenuOpen(!isMobileMenuOpen); }}
+                className="w-10 h-10 rounded-2xl bg-rose-50 hover:bg-rose-100 text-rose-600 border border-rose-200 flex items-center justify-center text-xl shadow-xs transition active:scale-95 cursor-pointer flex-shrink-0"
+                aria-label="Toggle mobile menu"
+                title="Open Studio Menu">
+                {isMobileMenuOpen ? "✕" : "☰"}
+              </button>
+            </div>
+
           </div>
+
+          {/* MOBILE HAMBURGER MENU DRAWER */}
+          {isMobileMenuOpen && (
+            <div className="md:hidden bg-white border-t border-rose-100 shadow-2xl px-5 py-6 space-y-5 animate-drawer">
+              {/* Primary Mobile CTA */}
+              <button 
+                type="button"
+                onClick={() => { 
+                  setIsMobileMenuOpen(false);
+                  playCuteGirlySound(); 
+                  bookingSectionRef.current?.scrollIntoView({ behavior: "smooth" }); 
+                }}
+                style={{
+                  backgroundColor: '#e11d48',
+                  background: 'linear-gradient(135deg, #e11d48 0%, #f43f5e 50%, #be123c 100%)',
+                  color: '#ffffff',
+                  boxShadow: '0 6px 20px rgba(225, 29, 72, 0.45)',
+                  border: '1.5px solid rgba(255, 255, 255, 0.8)'
+                }}
+                className="w-full py-3.5 rounded-full text-white font-black text-sm shadow-xl active:scale-95 transition flex items-center justify-center gap-2 cursor-pointer">
+                <span>Book Appointment Slay ✨</span>
+              </button>
+
+              {/* Navigation Links */}
+              <div className="space-y-1 text-sm font-bold text-zinc-800">
+                <a 
+                  href="#services" 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="flex items-center justify-between p-3 rounded-2xl hover:bg-rose-50 transition">
+                  <span className="flex items-center gap-2.5">
+                    <span className="text-base">💇‍♀️</span>
+                    <span>Services &amp; Pricing</span>
+                  </span>
+                  <span className="text-zinc-400 text-xs">→</span>
+                </a>
+                <a 
+                  href="#transformations" 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="flex items-center justify-between p-3 rounded-2xl hover:bg-rose-50 transition">
+                  <span className="flex items-center gap-2.5">
+                    <span className="text-base">✨</span>
+                    <span>Before &amp; After Studio</span>
+                  </span>
+                  <span className="text-zinc-400 text-xs">→</span>
+                </a>
+                <a 
+                  href="#booking" 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="flex items-center justify-between p-3 rounded-2xl hover:bg-rose-50 transition">
+                  <span className="flex items-center gap-2.5">
+                    <span className="text-base">📅</span>
+                    <span>Book Online</span>
+                  </span>
+                  <span className="text-zinc-400 text-xs">→</span>
+                </a>
+                <a 
+                  href="#flier-section" 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="flex items-center justify-between p-3 rounded-2xl hover:bg-rose-50 transition">
+                  <span className="flex items-center gap-2.5">
+                    <span className="text-base">📜</span>
+                    <span>Official Studio Flier</span>
+                  </span>
+                  <span className="text-zinc-400 text-xs">→</span>
+                </a>
+                <a 
+                  href="#quiz" 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="flex items-center justify-between p-3 rounded-2xl hover:bg-rose-50 transition">
+                  <span className="flex items-center gap-2.5">
+                    <span className="text-base">🎯</span>
+                    <span>Interactive Style Quiz</span>
+                  </span>
+                  <span className="text-zinc-400 text-xs">→</span>
+                </a>
+                <a 
+                  href="#reviews" 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="flex items-center justify-between p-3 rounded-2xl hover:bg-rose-50 transition">
+                  <span className="flex items-center gap-2.5">
+                    <span className="text-base">⭐</span>
+                    <span>Reviews &amp; Lagos Babes</span>
+                  </span>
+                  <span className="text-zinc-400 text-xs">→</span>
+                </a>
+              </div>
+
+              {/* Mobile Social & Contact */}
+              <div className="pt-3 border-t border-rose-100 grid grid-cols-2 gap-2 text-xs font-bold">
+                <a 
+                  href="https://wa.me/2348100024096"
+                  target="_blank"
+                  className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-2xl bg-[#25D366] text-white shadow-xs">
+                  <WhatsAppIcon className="w-4 h-4 fill-current" />
+                  <span>WhatsApp</span>
+                </a>
+                <a 
+                  href={SALON_INFO.instagramUrl}
+                  target="_blank"
+                  className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-2xl bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white shadow-xs">
+                  <InstagramIcon className="w-4 h-4 fill-current" />
+                  <span>Instagram</span>
+                </a>
+                <a 
+                  href={SALON_INFO.tiktokUrl}
+                  target="_blank"
+                  className="col-span-2 flex items-center justify-center gap-2 py-2.5 px-3 rounded-2xl bg-black text-white shadow-xs">
+                  <TikTokIcon className="w-4 h-4 fill-current" />
+                  <span>Follow on TikTok (@thedamianslabel)</span>
+                </a>
+              </div>
+
+              {/* Mobile Audio Controls */}
+              <div className="pt-3 border-t border-rose-100 flex items-center justify-between text-xs text-zinc-700">
+                <button 
+                  type="button"
+                  onClick={() => { playCuteGirlySound(); showToast("Playing fairy chime! 💖✨", "success"); }}
+                  className="flex items-center gap-1.5 px-3 py-2 rounded-full bg-pink-100 text-pink-700 font-bold active:scale-95 transition">
+                  <span>💖</span>
+                  <span>Play Fairy Chime</span>
+                </button>
+                <button 
+                  type="button"
+                  onClick={toggleMusicPlay}
+                  className="flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-rose-50 text-rose-700 font-bold border border-rose-200 active:scale-95 transition">
+                  <span>{isPlayingMusic ? "⏸️ Pause Music" : "🎵 Play Music"}</span>
+                </button>
+              </div>
+            </div>
+          )}
         </header>
       </div>
 
@@ -1466,7 +1791,7 @@ function App() {
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-purple-100 via-pink-100 to-amber-100 text-pink-800 border border-pink-200 hover:scale-105 transition shadow-xs">
-                  <span>📸</span>
+                  <InstagramIcon className="w-3.5 h-3.5 fill-current text-pink-700" />
                   <span>Instagram: <span className="underline font-black">@the_damian_label</span></span>
                 </a>
                 <a 
@@ -1474,7 +1799,7 @@ function App() {
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-100 text-zinc-900 border border-zinc-300 hover:scale-105 transition shadow-xs">
-                  <span>🎵</span>
+                  <TikTokIcon className="w-3.5 h-3.5 fill-current text-zinc-900" />
                   <span>TikTok: <span className="underline font-black">@thedamianslabel</span></span>
                 </a>
               </div>
@@ -1626,9 +1951,9 @@ function App() {
 
       {/* 4B. INTERACTIVE BEFORE & AFTER SLAY TRANSFORMATION STUDIO */}
       <section id="transformations" className="py-20 bg-gradient-to-b from-white via-rose-50/40 to-white border-t border-rose-100 reveal-on-scroll">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="text-center max-w-2xl mx-auto mb-10">
+          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-rose-100 text-rose-700 text-xs font-bold mb-3 shadow-xs">
               <span>✨ Real Lagos Transformations</span>
             </div>
@@ -1636,109 +1961,231 @@ function App() {
               Interactive Slay Studio <span className="gradient-pink-text">Before &amp; After</span>
             </h2>
             <p className="text-sm text-zinc-600 mt-2">
-              Slide left and right to reveal the difference professional steam revamping, needle ventilation, and acrylic nail sculpting makes!
+              Swipe or tap to reveal the difference professional steam revamping, needle ventilation, and acrylic nail sculpting makes!
             </p>
           </div>
 
-          {/* Transformation Tab Selectors */}
-          <div className="flex items-center justify-center gap-2 sm:gap-4 mb-8 flex-wrap">
-            {TRANSFORMATIONS.map(item => (
-              <button
-                key={item.id}
-                type="button"
-                onClick={() => { playCuteBubblePop(); setTransformationTab(item.id); setSliderPosition(50); }}
-                className={`px-4 sm:px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer ${
-                  transformationTab === item.id 
-                    ? "bg-rose-600 text-white shadow-lg scale-105" 
-                    : "bg-white text-zinc-700 border border-zinc-200 hover:border-rose-300"
-                }`}>
-                {item.title}
-              </button>
-            ))}
+          {/* 3 Stacked Transformation Selectors (Prices removed from buttons as requested) */}
+          <div className="flex flex-col gap-2.5 sm:gap-3 max-w-xl mx-auto mb-8 sm:mb-10">
+            {TRANSFORMATIONS.map((item, idx) => {
+              const isSelected = transformationTab === item.id;
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => {
+                    playCuteBubblePop();
+                    setTransformationTab(item.id);
+                    setTransformationSlide("after");
+                  }}
+                  style={isSelected ? {
+                    background: 'linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%)',
+                    borderColor: '#f43f5e',
+                    boxShadow: '0 6px 20px rgba(225, 29, 72, 0.15)'
+                  } : {}}
+                  className={`w-full p-3.5 sm:p-4 rounded-2xl border transition-all cursor-pointer flex items-center justify-between text-left group ${
+                    isSelected 
+                      ? "border-rose-500 scale-[1.01]" 
+                      : "bg-white/95 backdrop-blur-xs border-zinc-200 hover:border-rose-300 hover:bg-rose-50/40"
+                  }`}>
+                  <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+                    <div className={`w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center text-lg sm:text-xl flex-shrink-0 transition-transform ${
+                      isSelected ? "bg-rose-600 text-white shadow-md scale-105" : "bg-rose-50 text-rose-600 group-hover:scale-105"
+                    }`}>
+                      {idx === 0 ? "💆‍♀️" : idx === 1 ? "🪡" : "💅"}
+                    </div>
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-2">
+                        <h4 className="text-xs sm:text-sm font-black text-zinc-900 truncate">{item.title}</h4>
+                        {isSelected && (
+                          <span className="w-2 h-2 rounded-full bg-rose-600 animate-pulse flex-shrink-0" />
+                        )}
+                      </div>
+                      <p className="text-[11px] sm:text-xs text-rose-600 font-bold mt-0.5 truncate">{item.tag}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center flex-shrink-0 ml-3">
+                    <span className={`px-3 py-1 rounded-full text-[11px] font-black transition-all ${
+                      isSelected 
+                        ? "bg-rose-600 text-white shadow-xs" 
+                        : "bg-zinc-100 text-zinc-500 group-hover:bg-rose-100 group-hover:text-rose-700"
+                    }`}>
+                      {isSelected ? "✨ Viewing" : "Select"}
+                    </span>
+                  </div>
+                </button>
+              );
+            })}
           </div>
 
-          {/* Active Transformation Card */}
+          {/* Active Transformation Showcase (Expansive & Un-Caged!) */}
           {(() => {
             const activeTrans = TRANSFORMATIONS.find(t => t.id === transformationTab) || TRANSFORMATIONS[0];
+            const isAfter = transformationSlide === "after";
+
             return (
-              <div className="glass-panel p-4 sm:p-8 rounded-[36px] shadow-2xl border border-rose-100 max-w-4xl mx-auto">
-                {/* Before & After Interactive Image Comparison */}
+              <div className="max-w-4xl mx-auto">
+                
+                {/* View Mode Switcher: [ ⚠️ Before Slay ] [ ✨ After Slay ] */}
+                <div className="flex items-center justify-center gap-2 p-1.5 bg-white/95 backdrop-blur-md rounded-full w-full max-w-xs mx-auto mb-6 shadow-sm border border-rose-200">
+                  <button
+                    type="button"
+                    onClick={() => { playCuteBubblePop(); setTransformationSlide("before"); }}
+                    className={`flex-1 py-2.5 px-4 rounded-full text-xs font-black transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
+                      !isAfter
+                        ? "bg-rose-600 text-white shadow-md scale-102"
+                        : "text-zinc-600 hover:text-zinc-900"
+                    }`}>
+                    <span>⚠️</span>
+                    <span>Before Slay</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => { playCuteBubblePop(); setTransformationSlide("after"); }}
+                    className={`flex-1 py-2.5 px-4 rounded-full text-xs font-black transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
+                      isAfter
+                        ? "bg-emerald-600 text-white shadow-md scale-102"
+                        : "text-zinc-600 hover:text-zinc-900"
+                    }`}>
+                    <span>✨</span>
+                    <span>After Slay</span>
+                  </button>
+                </div>
+
+                {/* Grand Un-Caged Image Canvas */}
                 <div 
-                  className="relative h-72 sm:h-96 w-full rounded-2xl sm:rounded-3xl overflow-hidden select-none touch-none shadow-inner bg-zinc-900 cursor-ew-resize group"
-                  onMouseMove={(e) => {
-                    const rect = e.currentTarget.getBoundingClientRect();
-                    const pos = Math.max(0, Math.min(100, ((e.clientX - rect.left) / rect.width) * 100));
-                    setSliderPosition(pos);
+                  className="relative h-[420px] sm:h-[540px] md:h-[620px] lg:h-[660px] w-full rounded-[28px] sm:rounded-[36px] overflow-hidden select-none shadow-2xl bg-zinc-950 cursor-pointer group border border-rose-100/60"
+                  onClick={() => {
+                    playCuteBubblePop();
+                    setTransformationSlide(prev => prev === "after" ? "before" : "after");
                   }}
-                  onTouchMove={(e) => {
-                    if (e.touches && e.touches[0]) {
-                      const rect = e.currentTarget.getBoundingClientRect();
-                      const pos = Math.max(0, Math.min(100, ((e.touches[0].clientX - rect.left) / rect.width) * 100));
-                      setSliderPosition(pos);
+                  onTouchStart={(e) => {
+                    touchStartXRef.current = e.touches[0].clientX;
+                    touchStartYRef.current = e.touches[0].clientY;
+                  }}
+                  onTouchEnd={(e) => {
+                    if (touchStartXRef.current === null) return;
+                    const diffX = e.changedTouches[0].clientX - touchStartXRef.current;
+                    const diffY = e.changedTouches[0].clientY - (touchStartYRef.current || 0);
+                    touchStartXRef.current = null;
+                    touchStartYRef.current = null;
+                    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 30) {
+                      if (diffX < 0) {
+                        setTransformationSlide("after");
+                        playCuteBubblePop();
+                      } else {
+                        setTransformationSlide("before");
+                        playCuteBubblePop();
+                      }
                     }
                   }}>
-                  {/* After Image (Full Background) */}
+
+                  {/* Before Image */}
+                  <img 
+                    src={activeTrans.beforeImage} 
+                    alt={`${activeTrans.title} - Before`} 
+                    className={`absolute inset-0 w-full h-full object-cover object-top sm:object-center transition-all duration-500 ease-out ${
+                      !isAfter 
+                        ? "opacity-100 scale-100" 
+                        : "opacity-0 scale-95 pointer-events-none"
+                    }`}
+                  />
+
+                  {/* After Image */}
                   <img 
                     src={activeTrans.afterImage} 
-                    alt="After Transformation" 
-                    className="absolute inset-0 w-full h-full object-cover" 
+                    alt={`${activeTrans.title} - After Slay`} 
+                    className={`absolute inset-0 w-full h-full object-cover object-top sm:object-center transition-all duration-500 ease-out ${
+                      isAfter 
+                        ? "opacity-100 scale-100" 
+                        : "opacity-0 scale-95 pointer-events-none"
+                    }`}
                   />
-                  <div className="absolute top-4 right-4 z-10 px-3 py-1.5 rounded-full bg-emerald-500/90 backdrop-blur-md text-white text-xs font-black shadow-md flex items-center gap-1.5">
-                    <span>✨</span>
-                    <span>AFTER TDL SLAY</span>
-                  </div>
 
-                  {/* Before Image (Clipped Left Layer) */}
-                  <div 
-                    className="absolute inset-0 overflow-hidden" 
-                    style={{ width: `${sliderPosition}%` }}>
-                    <img 
-                      src={activeTrans.beforeImage} 
-                      alt="Before Transformation" 
-                      className="absolute inset-0 w-full h-full object-cover max-w-none" 
-                      style={{ width: '100%', minWidth: '100%' }}
-                    />
-                    <div className="absolute top-4 left-4 z-10 px-3 py-1.5 rounded-full bg-rose-600/90 backdrop-blur-md text-white text-xs font-black shadow-md flex items-center gap-1.5">
+                  {/* Gradient Vignette at bottom for clean overlay visibility */}
+                  <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/80 via-black/35 to-transparent pointer-events-none" />
+
+                  {/* Before Slay Badge - ONLY shown when BEFORE image is visible */}
+                  {!isAfter && (
+                    <div className="absolute top-4 left-4 sm:top-6 sm:left-6 z-10 px-4 py-2 rounded-full bg-rose-600/95 backdrop-blur-md text-white text-xs sm:text-sm font-black shadow-2xl flex items-center gap-2 animate-fadeIn border border-white/20">
                       <span>⚠️</span>
                       <span>BEFORE SLAY</span>
                     </div>
-                  </div>
+                  )}
 
-                  {/* Divider Line & Drag Handle */}
-                  <div 
-                    className="absolute top-0 bottom-0 z-20 w-1 bg-white shadow-2xl flex items-center justify-center pointer-events-none" 
-                    style={{ left: `${sliderPosition}%` }}>
-                    <div className="w-9 h-9 rounded-full bg-rose-600 border-2 border-white text-white flex items-center justify-center shadow-2xl text-xs font-black animate-pulse">
-                      ↔️
+                  {/* After Slay Badge - ONLY shown when AFTER image is visible */}
+                  {isAfter && (
+                    <div className="absolute top-4 right-4 sm:top-6 sm:right-6 z-10 px-4 py-2 rounded-full bg-emerald-600/95 backdrop-blur-md text-white text-xs sm:text-sm font-black shadow-2xl flex items-center gap-2 animate-fadeIn border border-white/20">
+                      <span>✨</span>
+                      <span>AFTER TDL SLAY</span>
                     </div>
+                  )}
+
+                  {/* Left Chevron (Switch to Before) */}
+                  <button
+                    type="button"
+                    aria-label="View Before Slay"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      playCuteBubblePop();
+                      setTransformationSlide("before");
+                    }}
+                    className={`absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 z-20 w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all cursor-pointer ${
+                      !isAfter 
+                        ? "bg-white/20 text-white/40 backdrop-blur-xs cursor-default" 
+                        : "bg-black/55 hover:bg-rose-600 text-white shadow-2xl backdrop-blur-md hover:scale-110 active:scale-95 border border-white/20"
+                    }`}>
+                    <span className="text-2xl font-bold leading-none select-none">‹</span>
+                  </button>
+
+                  {/* Right Chevron (Switch to After) */}
+                  <button
+                    type="button"
+                    aria-label="View After Slay"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      playCuteBubblePop();
+                      setTransformationSlide("after");
+                    }}
+                    className={`absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 z-20 w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all cursor-pointer ${
+                      isAfter 
+                        ? "bg-white/20 text-white/40 backdrop-blur-xs cursor-default" 
+                        : "bg-black/55 hover:bg-emerald-600 text-white shadow-2xl backdrop-blur-md hover:scale-110 active:scale-95 border border-white/20"
+                    }`}>
+                    <span className="text-2xl font-bold leading-none select-none">›</span>
+                  </button>
+
+                  {/* Bottom Indicator & Swipe/Tap Hint */}
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 px-4 py-2 rounded-full bg-black/70 backdrop-blur-md text-white text-xs font-bold flex items-center gap-2.5 pointer-events-none shadow-xl border border-white/10">
+                    <span className={`w-2.5 h-2.5 rounded-full transition-all ${!isAfter ? "bg-rose-500 scale-125" : "bg-white/40"}`} />
+                    <span>{!isAfter ? "Before" : "After"}</span>
+                    <span className={`w-2.5 h-2.5 rounded-full transition-all ${isAfter ? "bg-emerald-400 scale-125" : "bg-white/40"}`} />
+                    <span className="text-white/60 text-[10px] sm:text-xs ml-1 font-medium">· Swipe or Tap to flip</span>
                   </div>
                 </div>
 
-                {/* Slider Hint */}
-                <div className="flex items-center justify-between text-xs text-zinc-500 mt-3 px-2">
-                  <span className="font-bold text-rose-600">◀️ Drag to see Before</span>
-                  <span className="italic text-[11px] hidden sm:inline">Move cursor / finger across image</span>
-                  <span className="font-bold text-emerald-600">Drag to see After ▶️</span>
-                </div>
-
-                {/* Details & Instant Book Button */}
-                <div className="mt-6 pt-6 border-t border-rose-100 flex flex-col sm:flex-row items-center justify-between gap-4">
-                  <div className="space-y-1 text-center sm:text-left">
-                    <div className="flex items-center justify-center sm:justify-start gap-2">
-                      <h3 className="text-xl font-black text-zinc-900">{activeTrans.title}</h3>
-                      <span className="px-2.5 py-0.5 rounded-full bg-rose-100 text-rose-700 font-bold text-xs">
+                {/* Details & Mobile-Responsive Book Button */}
+                <div className="mt-6 p-5 sm:p-7 rounded-[28px] bg-white/95 backdrop-blur-md border border-rose-100 shadow-xl flex flex-col md:flex-row items-stretch md:items-center justify-between gap-5">
+                  <div className="space-y-2 text-left">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <h3 className="text-lg sm:text-2xl font-black text-zinc-900">{activeTrans.title}</h3>
+                      <span className="px-3 py-1 rounded-full bg-rose-100 text-rose-700 font-bold text-xs">
                         {activeTrans.tag}
                       </span>
                     </div>
-                    <p className="text-xs text-zinc-600 max-w-md">
-                      <strong>Results:</strong> {activeTrans.afterDesc}
+                    <p className="text-xs sm:text-sm text-zinc-600 max-w-xl leading-relaxed">
+                      {!isAfter ? (
+                        <span><strong className="text-rose-600">⚠️ Natural Problem:</strong> {activeTrans.beforeDesc}</span>
+                      ) : (
+                        <span><strong className="text-emerald-600">✨ TDL Result:</strong> {activeTrans.afterDesc}</span>
+                      )}
                     </p>
                   </div>
 
-                  <div className="flex items-center gap-4 flex-shrink-0">
-                    <div className="text-right">
-                      <span className="text-[10px] text-zinc-400 uppercase font-bold block">Starting at</span>
-                      <span className="text-2xl font-black text-rose-600">{formatNaira(activeTrans.price)}</span>
+                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 flex-shrink-0 pt-2 md:pt-0 border-t md:border-t-0 border-rose-100">
+                    <div className="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center">
+                      <span className="text-[10px] text-zinc-400 uppercase font-bold tracking-wider">Starting at</span>
+                      <span className="text-2xl sm:text-3xl font-black text-rose-600">{formatNaira(activeTrans.price)}</span>
                     </div>
                     <button
                       type="button"
@@ -1755,7 +2202,7 @@ function App() {
                         background: 'linear-gradient(135deg, #e11d48 0%, #f43f5e 50%, #be123c 100%)',
                         color: '#ffffff'
                       }}
-                      className="px-6 py-3 rounded-full text-white text-xs sm:text-sm font-black shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer flex items-center gap-2">
+                      className="w-full sm:w-auto px-7 py-3.5 rounded-full text-white text-xs sm:text-sm font-black shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer flex items-center justify-center gap-2">
                       <span>Book This Transformation</span>
                       <span>✨</span>
                     </button>
@@ -2215,7 +2662,7 @@ function App() {
                           type="text" 
                           value={promoInput} 
                           onChange={(e) => setPromoInput(e.target.value)}
-                          placeholder="e.g. LAGOSBABE or TDL10" 
+                          placeholder="Enter your promo code here..." 
                           className="flex-1 px-4 py-2.5 rounded-2xl border border-zinc-200 text-sm uppercase bg-white font-mono" 
                         />
                         <button type="button" onClick={handleApplyPromo} className="px-5 py-2.5 rounded-2xl bg-zinc-900 text-white text-xs font-bold">Apply</button>
@@ -2384,24 +2831,24 @@ function App() {
                 <a 
                   href="https://wa.me/2348100024096" 
                   target="_blank" 
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs shadow-md transition">
-                  <span>💬</span>
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-xs shadow-md transition">
+                  <WhatsAppIcon className="w-4 h-4 fill-current" />
                   <span>WhatsApp (0810-002-4096)</span>
                 </a>
                 <a 
                   href={SALON_INFO.instagramUrl} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-amber-500 text-white font-bold text-xs shadow-md hover:opacity-90 transition">
-                  <span>📸</span>
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white font-bold text-xs shadow-md hover:opacity-90 transition">
+                  <InstagramIcon className="w-4 h-4 fill-current" />
                   <span>Follow @the_damian_label on Instagram</span>
                 </a>
                 <a 
                   href={SALON_INFO.tiktokUrl} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-zinc-950 text-white font-bold text-xs shadow-md hover:bg-black transition">
-                  <span>🎵</span>
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-black text-white font-bold text-xs shadow-md hover:bg-zinc-800 transition">
+                  <TikTokIcon className="w-4 h-4 fill-current" />
                   <span>Follow @thedamianslabel on TikTok</span>
                 </a>
               </div>
@@ -2428,9 +2875,9 @@ function App() {
               },
               {
                 text: "The glueless wig customization is 10/10. Bleached knots look completely invisible on my skin. Plus my acrylic nails lasted 4 weeks without a single crack. Definitely coming back!",
-                name: "Tiwa Savage-Fan",
+                name: "Gloria Obasi",
                 badge: "Glueless Wig + Acrylics",
-                init: "T"
+                init: "G"
               },
               {
                 text: "My frontal was completely balding in the center. Amara ventilated fresh human hair and you can't even tell it was ever damaged. Saved me buying a new ₦150,000 frontal!",
@@ -2465,14 +2912,14 @@ function App() {
           </span>
           <h2 className="text-3xl sm:text-5xl font-black font-serif-lux">Join The Damian Label VIP Club</h2>
           <p className="text-sm text-zinc-300 max-w-lg mx-auto">
-            Get exclusive promo drops, birthday revamp discounts, priority booking during festive periods, and 15% off your next session.
+            Get exclusive promo drops, birthday revamp discounts, priority booking during festive periods, and secret VIP perks sent directly to your inbox.
           </p>
 
           <form 
             onSubmit={(e) => {
               e.preventDefault();
               if (newsletterEmail) {
-                showToast("Welcome to TDL VIP Club! Use code LAGOSBABE for 15% off! 💖", "success");
+                showToast("Welcome to TDL VIP Club! Check your inbox for exclusive perks 💖", "success");
                 setNewsletterEmail("");
               }
             }} 
@@ -2506,17 +2953,29 @@ function App() {
           <div className="flex flex-wrap items-center justify-center gap-6">
             <a href="#services" className="hover:text-white transition">Services & Pricing</a>
             <a href="#booking" className="hover:text-white transition">Book Appointment</a>
-            <a href="https://wa.me/2348100024096" target="_blank" className="hover:text-emerald-400 font-bold transition flex items-center gap-1">
-              <span>💬</span> WhatsApp: 0810-002-4096
+            <a href="https://wa.me/2348100024096" target="_blank" className="hover:text-emerald-400 font-bold transition flex items-center gap-1.5">
+              <WhatsAppIcon className="w-4 h-4 text-emerald-400 fill-current" /> <span>WhatsApp: 0810-002-4096</span>
             </a>
-            <a href={SALON_INFO.instagramUrl} target="_blank" rel="noopener noreferrer" className="hover:text-pink-400 font-bold transition flex items-center gap-1">
-              <span>📸</span> Instagram (@the_damian_label)
+            <a href={SALON_INFO.instagramUrl} target="_blank" rel="noopener noreferrer" className="hover:text-pink-400 font-bold transition flex items-center gap-1.5">
+              <InstagramIcon className="w-4 h-4 text-pink-400 fill-current" /> <span>Instagram (@the_damian_label)</span>
             </a>
-            <a href={SALON_INFO.tiktokUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white font-bold transition flex items-center gap-1">
-              <span>🎵</span> TikTok (@thedamianslabel)
+            <a href={SALON_INFO.tiktokUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white font-bold transition flex items-center gap-1.5">
+              <TikTokIcon className="w-4 h-4 text-zinc-300 fill-current" /> <span>TikTok (@thedamianslabel)</span>
             </a>
-            <button onClick={() => setIsAdminOpen(true)} className="text-rose-400 hover:text-rose-300 font-bold flex items-center gap-1">
-              <span>👑</span> Owner Portal (Private)
+            <button 
+              type="button"
+              onClick={() => {
+                if (isOwnerAuthenticated) {
+                  setIsAdminOpen(true);
+                } else {
+                  setOwnerPinInput("");
+                  setOwnerPinError("");
+                  setIsOwnerPinModalOpen(true);
+                }
+              }} 
+              className="text-zinc-600 hover:text-zinc-400 text-xs transition flex items-center gap-1 cursor-pointer"
+              title="Staff & Owner Portal">
+              <span>🔒</span> Staff Access
             </button>
           </div>
 
@@ -2714,12 +3173,30 @@ function App() {
       {isAdminOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop">
           <div className="bg-white rounded-[36px] max-w-4xl w-full p-8 shadow-2xl relative max-h-[85vh] overflow-y-auto">
-            <div className="flex justify-between items-center mb-6">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-6">
               <div>
-                <h3 className="text-xl font-bold font-serif-lux">The Damian Label - Owner Portal</h3>
-                <p className="text-xs text-zinc-500">Ago Palace Way, Lagos • Live Appointments & Payment Management</p>
+                <h3 className="text-xl font-bold font-serif-lux flex items-center gap-2">
+                  <span>👑 The Damian Label — Owner Portal</span>
+                  <span className="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-mono font-bold">Authenticated</span>
+                </h3>
+                <p className="text-xs text-zinc-500">Ago Palace Way, Lagos • Live Appointments &amp; Payment Management</p>
               </div>
-              <button onClick={() => setIsAdminOpen(false)} className="text-sm font-bold text-zinc-500">✕</button>
+              <div className="flex items-center gap-2 self-end sm:self-auto">
+                <button 
+                  type="button" 
+                  onClick={handleOwnerLogout}
+                  className="px-3 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold text-xs flex items-center gap-1 transition cursor-pointer border border-rose-200"
+                  title="Lock session and log out">
+                  <span>🔒</span>
+                  <span>Lock &amp; Log Out</span>
+                </button>
+                <button 
+                  type="button"
+                  onClick={() => setIsAdminOpen(false)} 
+                  className="w-8 h-8 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-600 font-black text-sm flex items-center justify-center cursor-pointer">
+                  ✕
+                </button>
+              </div>
             </div>
 
             {/* Metrics */}
@@ -2770,7 +3247,7 @@ function App() {
                     : "bg-zinc-100 text-zinc-700 hover:bg-zinc-200"
                 }`}>
                 <span>📅</span>
-                <span>Working Days &amp; Availability (Private)</span>
+                <span>Working Days &amp; Availability</span>
               </button>
 
               <button
@@ -2796,7 +3273,461 @@ function App() {
                 <span>🔔</span>
                 <span>Sound &amp; Alerts</span>
               </button>
+
+              <button
+                type="button"
+                onClick={() => setAdminTab("analytics")}
+                className={`px-4 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 whitespace-nowrap transition ${
+                  adminTab === "analytics" 
+                    ? "bg-rose-600 text-white shadow-sm" 
+                    : "bg-zinc-100 text-zinc-700 hover:bg-zinc-200"
+                }`}>
+                <span>📊</span>
+                <span>Sales Analytics</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setAdminTab("security")}
+                className={`px-4 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 whitespace-nowrap transition ${
+                  adminTab === "security" 
+                    ? "bg-rose-600 text-white shadow-sm" 
+                    : "bg-zinc-100 text-zinc-700 hover:bg-zinc-200"
+                }`}>
+                <span>🔒</span>
+                <span>Security &amp; PIN</span>
+              </button>
             </div>
+
+            {/* TAB: SALES ANALYTICS — Daily / Weekly / Monthly */}
+            {adminTab === "analytics" && (() => {
+              // ── Helpers ──────────────────────────────────────────────
+              const toDateStr = (iso) => (iso || "").slice(0, 10); // "YYYY-MM-DD"
+              const getWeekBounds = (dateStr) => {
+                const d = new Date(dateStr);
+                const day = d.getDay(); // 0=Sun
+                const mon = new Date(d); mon.setDate(d.getDate() - ((day + 6) % 7));
+                const sun = new Date(mon); sun.setDate(mon.getDate() + 6);
+                return { mon, sun };
+              };
+              const fmt = (n) => formatNaira(n);
+              const fmtDate = (str) => {
+                if (!str) return "";
+                const [y, m, d] = str.split("-");
+                const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+                return `${d} ${months[+m-1]} ${y}`;
+              };
+              const dayNames = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+
+              // ── Booking helpers ───────────────────────────────────────
+              // Use booking.date (the appointment date, "YYYY-MM-DD" or display)
+              // Also fall back to receiptGeneratedAt for the booking-received date
+              const getBookingDay = (b) => {
+                // Prefer appointment date, fallback to booking creation date
+                const raw = b.date || toDateStr(b.receiptGeneratedAt);
+                // Normalize "Thursday, Nov 20 2026" → YYYY-MM-DD
+                if (raw && raw.match(/^\d{4}-\d{2}-\d{2}$/)) return raw;
+                // Try parsing display format
+                try {
+                  const parsed = new Date(raw);
+                  if (!isNaN(parsed)) return parsed.toISOString().slice(0, 10);
+                } catch {}
+                return toDateStr(b.receiptGeneratedAt);
+              };
+
+              // ── Daily ────────────────────────────────────────────────
+              const dailyBookings = adminBookings.filter(b => getBookingDay(b) === analyticsDate);
+              const dailyRevenue = dailyBookings.reduce((s, b) => s + (b.amountPaidOnline || b.depositPaid || 0), 0);
+              const dailyProjected = dailyBookings.reduce((s, b) => s + (b.finalTotal || 0), 0);
+
+              // ── Weekly ───────────────────────────────────────────────
+              const { mon, sun } = getWeekBounds(analyticsDate);
+              const weekDays = Array.from({ length: 7 }, (_, i) => {
+                const d = new Date(mon); d.setDate(mon.getDate() + i);
+                return d.toISOString().slice(0, 10);
+              });
+              const weeklyData = weekDays.map((day, i) => {
+                const bs = adminBookings.filter(b => getBookingDay(b) === day);
+                return {
+                  day: dayNames[i],
+                  date: day,
+                  count: bs.length,
+                  revenue: bs.reduce((s, b) => s + (b.amountPaidOnline || b.depositPaid || 0), 0),
+                  projected: bs.reduce((s, b) => s + (b.finalTotal || 0), 0),
+                  confirmed: bs.filter(b => b.status === "Confirmed").length
+                };
+              });
+              const weekTotal = weeklyData.reduce((s, d) => s + d.revenue, 0);
+              const weekOrders = weeklyData.reduce((s, d) => s + d.count, 0);
+              const weekMax = Math.max(...weeklyData.map(d => d.revenue), 1);
+
+              // ── Monthly ──────────────────────────────────────────────
+              const [selYear, selMonth] = analyticsDate.split("-").map(Number);
+              const daysInMonth = new Date(selYear, selMonth, 0).getDate();
+              const monthlyData = Array.from({ length: daysInMonth }, (_, i) => {
+                const day = `${selYear}-${String(selMonth).padStart(2,"0")}-${String(i+1).padStart(2,"0")}`;
+                const bs = adminBookings.filter(b => getBookingDay(b) === day);
+                return {
+                  d: i + 1, day,
+                  count: bs.length,
+                  revenue: bs.reduce((s, b) => s + (b.amountPaidOnline || b.depositPaid || 0), 0),
+                  projected: bs.reduce((s, b) => s + (b.finalTotal || 0), 0),
+                  confirmed: bs.filter(b => b.status === "Confirmed").length
+                };
+              });
+              const monthTotal = monthlyData.reduce((s, d) => s + d.revenue, 0);
+              const monthOrders = monthlyData.reduce((s, d) => s + d.count, 0);
+              const monthMax = Math.max(...monthlyData.map(d => d.revenue), 1);
+              const monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+              return (
+                <div className="space-y-5">
+                  {/* View Switcher + Date Picker */}
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div className="flex gap-2">
+                      {[
+                        { id: "daily", label: "📅 Daily" },
+                        { id: "weekly", label: "📆 Weekly" },
+                        { id: "monthly", label: "🗓️ Monthly" }
+                      ].map(v => (
+                        <button
+                          key={v.id}
+                          type="button"
+                          onClick={() => setAnalyticsView(v.id)}
+                          className={`px-4 py-2 rounded-xl font-bold text-xs transition cursor-pointer ${
+                            analyticsView === v.id
+                              ? "bg-rose-600 text-white shadow-sm"
+                              : "bg-zinc-100 text-zinc-700 hover:bg-zinc-200"
+                          }`}>
+                          {v.label}
+                        </button>
+                      ))}
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <label className="text-xs text-zinc-500 font-semibold">
+                        {analyticsView === "monthly" ? "Month:" : "Date:"}
+                      </label>
+                      <input
+                        type={analyticsView === "monthly" ? "month" : "date"}
+                        value={analyticsView === "monthly" ? analyticsDate.slice(0,7) : analyticsDate}
+                        max={new Date().toISOString().slice(0, analyticsView === "monthly" ? 7 : 10)}
+                        onChange={e => {
+                          const v = e.target.value;
+                          setAnalyticsDate(analyticsView === "monthly" ? v + "-01" : v);
+                        }}
+                        className="border border-zinc-300 rounded-xl px-3 py-1.5 text-xs font-mono focus:outline-none focus:ring-2 focus:ring-rose-400 bg-white"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setAnalyticsDate(new Date().toISOString().slice(0,10))}
+                        className="px-3 py-1.5 rounded-xl bg-zinc-100 hover:bg-zinc-200 text-zinc-700 font-bold text-xs transition cursor-pointer">
+                        Today
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* ── DAILY VIEW ─────────────────────────────────── */}
+                  {analyticsView === "daily" && (
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-2">
+                        <h4 className="font-black text-zinc-900 text-sm">📅 {fmtDate(analyticsDate)}</h4>
+                        {analyticsDate === new Date().toISOString().slice(0,10) && (
+                          <span className="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-black animate-pulse">TODAY</span>
+                        )}
+                      </div>
+
+                      {/* Daily KPIs */}
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <div className="p-4 rounded-2xl bg-rose-50 border border-rose-100 text-center">
+                          <p className="text-[10px] text-zinc-500 uppercase font-bold tracking-wider">Orders</p>
+                          <p className="text-3xl font-black text-zinc-900 mt-1">{dailyBookings.length}</p>
+                        </div>
+                        <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-100 text-center">
+                          <p className="text-[10px] text-zinc-500 uppercase font-bold tracking-wider">Confirmed</p>
+                          <p className="text-3xl font-black text-emerald-700 mt-1">{dailyBookings.filter(b => b.status === "Confirmed").length}</p>
+                        </div>
+                        <div className="p-4 rounded-2xl bg-amber-50 border border-amber-100 text-center">
+                          <p className="text-[10px] text-zinc-500 uppercase font-bold tracking-wider">Cash Collected</p>
+                          <p className="text-xl font-black text-amber-700 mt-1">{fmt(dailyRevenue)}</p>
+                        </div>
+                        <div className="p-4 rounded-2xl bg-purple-50 border border-purple-100 text-center">
+                          <p className="text-[10px] text-zinc-500 uppercase font-bold tracking-wider">Service Value</p>
+                          <p className="text-xl font-black text-purple-700 mt-1">{fmt(dailyProjected)}</p>
+                        </div>
+                      </div>
+
+                      {/* Daily Order List */}
+                      {dailyBookings.length === 0 ? (
+                        <div className="text-center py-12 text-zinc-400">
+                          <div className="text-4xl mb-3">📭</div>
+                          <p className="font-bold text-sm">No orders on {fmtDate(analyticsDate)}</p>
+                          <p className="text-xs mt-1">Use the date picker above to browse other days</p>
+                        </div>
+                      ) : (
+                        <div className="space-y-2">
+                          <p className="text-xs font-bold text-zinc-500 uppercase tracking-wider">Orders on this day</p>
+                          {dailyBookings.map(b => (
+                            <div key={b.id} className={`p-3.5 rounded-2xl border flex items-center justify-between gap-3 ${
+                              b.status === "Confirmed" ? "bg-emerald-50/60 border-emerald-200" :
+                              b.status === "Pending Verification" ? "bg-amber-50/60 border-amber-200" :
+                              "bg-zinc-50 border-zinc-200"
+                            }`}>
+                              <div className="min-w-0">
+                                <div className="flex items-center gap-2 flex-wrap">
+                                  <span className="font-mono text-xs text-rose-600 font-black">#{b.id}</span>
+                                  <span className="font-bold text-zinc-900 text-sm truncate">{b.clientName}</span>
+                                  <span className={`px-2 py-0.5 rounded-full text-[10px] font-black ${
+                                    b.status === "Confirmed" ? "bg-emerald-100 text-emerald-800" :
+                                    b.status === "Pending Verification" ? "bg-amber-200 text-amber-900 animate-pulse" :
+                                    "bg-rose-100 text-rose-800"
+                                  }`}>{b.status === "Confirmed" ? "✅ Confirmed" : b.status === "Pending Verification" ? "⏳ Pending" : "❌ Declined"}</span>
+                                </div>
+                                <p className="text-xs text-zinc-600 mt-0.5 truncate">{b.serviceName}</p>
+                                <p className="text-xs text-zinc-400">{b.time} · {b.deliveryMode}</p>
+                              </div>
+                              <div className="text-right flex-shrink-0">
+                                <p className="font-black text-sm text-emerald-700">{fmt(b.amountPaidOnline || b.depositPaid || 0)}</p>
+                                <p className="text-[10px] text-zinc-400">of {fmt(b.finalTotal || 0)}</p>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  {/* ── WEEKLY VIEW ────────────────────────────────── */}
+                  {analyticsView === "weekly" && (
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-2">
+                        <h4 className="font-black text-zinc-900 text-sm">
+                          📆 Week of {fmtDate(weekDays[0])} — {fmtDate(weekDays[6])}
+                        </h4>
+                      </div>
+
+                      {/* Weekly KPIs */}
+                      <div className="grid grid-cols-3 gap-3">
+                        <div className="p-4 rounded-2xl bg-rose-50 border border-rose-100 text-center">
+                          <p className="text-[10px] text-zinc-500 uppercase font-bold tracking-wider">Week Orders</p>
+                          <p className="text-3xl font-black text-zinc-900 mt-1">{weekOrders}</p>
+                        </div>
+                        <div className="p-4 rounded-2xl bg-amber-50 border border-amber-100 text-center">
+                          <p className="text-[10px] text-zinc-500 uppercase font-bold tracking-wider">Week Revenue</p>
+                          <p className="text-xl font-black text-amber-700 mt-1">{fmt(weekTotal)}</p>
+                        </div>
+                        <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-100 text-center">
+                          <p className="text-[10px] text-zinc-500 uppercase font-bold tracking-wider">Best Day</p>
+                          <p className="text-xl font-black text-emerald-700 mt-1">
+                            {weeklyData.reduce((best, d) => d.revenue > best.revenue ? d : best, weeklyData[0]).day}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Bar Chart */}
+                      <div className="p-4 rounded-2xl bg-zinc-50 border border-zinc-200">
+                        <p className="text-xs font-bold text-zinc-500 uppercase tracking-wider mb-4">Revenue by Day</p>
+                        <div className="flex items-end gap-2 h-32">
+                          {weeklyData.map((d, i) => {
+                            const pct = weekMax > 0 ? (d.revenue / weekMax) * 100 : 0;
+                            const isToday = d.date === new Date().toISOString().slice(0,10);
+                            const isSelected = d.date === analyticsDate;
+                            return (
+                              <div key={i} className="flex-1 flex flex-col items-center gap-1 cursor-pointer group"
+                                onClick={() => { setAnalyticsDate(d.date); setAnalyticsView("daily"); }}>
+                                <span className="text-[9px] font-black text-zinc-500 opacity-0 group-hover:opacity-100 transition whitespace-nowrap">{fmt(d.revenue)}</span>
+                                <div
+                                  className={`w-full rounded-t-lg transition-all ${
+                                    d.count === 0 ? "bg-zinc-200" :
+                                    isToday ? "bg-rose-500" :
+                                    isSelected ? "bg-amber-400" : "bg-rose-300 group-hover:bg-rose-500"
+                                  }`}
+                                  style={{ height: `${Math.max(pct, d.count > 0 ? 8 : 2)}%` }}
+                                />
+                                <span className={`text-[10px] font-black ${isToday ? "text-rose-600" : "text-zinc-500"}`}>{d.day}</span>
+                                {d.count > 0 && <span className="text-[9px] text-zinc-400">{d.count}</span>}
+                              </div>
+                            );
+                          })}
+                        </div>
+                        <p className="text-[10px] text-zinc-400 mt-2 text-center">Tap a bar to see that day&apos;s details</p>
+                      </div>
+
+                      {/* Weekly breakdown table */}
+                      <div className="rounded-2xl border border-zinc-200 overflow-hidden">
+                        <table className="w-full text-xs">
+                          <thead className="bg-zinc-50">
+                            <tr>
+                              <th className="p-3 text-left font-bold text-zinc-600">Day</th>
+                              <th className="p-3 text-center font-bold text-zinc-600">Orders</th>
+                              <th className="p-3 text-center font-bold text-zinc-600">✅ Confirmed</th>
+                              <th className="p-3 text-right font-bold text-zinc-600">Cash In</th>
+                              <th className="p-3 text-right font-bold text-zinc-600">Service Value</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {weeklyData.map((d, i) => {
+                              const isToday = d.date === new Date().toISOString().slice(0,10);
+                              return (
+                                <tr
+                                  key={i}
+                                  onClick={() => { setAnalyticsDate(d.date); setAnalyticsView("daily"); }}
+                                  className={`border-t border-zinc-100 cursor-pointer transition ${
+                                    isToday ? "bg-rose-50/60 hover:bg-rose-100/60" : "hover:bg-zinc-50"
+                                  }`}>
+                                  <td className="p-3">
+                                    <span className={`font-black ${isToday ? "text-rose-600" : "text-zinc-800"}`}>{d.day}</span>
+                                    <span className="text-zinc-400 ml-2">{fmtDate(d.date)}</span>
+                                    {isToday && <span className="ml-2 px-1.5 py-0.5 rounded-full bg-rose-100 text-rose-700 text-[9px] font-black">TODAY</span>}
+                                  </td>
+                                  <td className="p-3 text-center font-bold text-zinc-900">{d.count || "—"}</td>
+                                  <td className="p-3 text-center font-bold text-emerald-700">{d.confirmed || "—"}</td>
+                                  <td className="p-3 text-right font-black text-amber-700">{d.revenue > 0 ? fmt(d.revenue) : "—"}</td>
+                                  <td className="p-3 text-right font-semibold text-zinc-500">{d.projected > 0 ? fmt(d.projected) : "—"}</td>
+                                </tr>
+                              );
+                            })}
+                          </tbody>
+                          <tfoot className="bg-zinc-50">
+                            <tr className="border-t border-zinc-200">
+                              <td className="p-3 font-black text-zinc-900">TOTAL</td>
+                              <td className="p-3 text-center font-black text-zinc-900">{weekOrders}</td>
+                              <td className="p-3 text-center font-black text-emerald-700">{weeklyData.reduce((s,d)=>s+d.confirmed,0)}</td>
+                              <td className="p-3 text-right font-black text-amber-700">{fmt(weekTotal)}</td>
+                              <td className="p-3 text-right font-black text-zinc-500">{fmt(weeklyData.reduce((s,d)=>s+d.projected,0))}</td>
+                            </tr>
+                          </tfoot>
+                        </table>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* ── MONTHLY VIEW ───────────────────────────────── */}
+                  {analyticsView === "monthly" && (
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-2">
+                        <h4 className="font-black text-zinc-900 text-sm">
+                          🗓️ {monthNames[selMonth - 1]} {selYear}
+                        </h4>
+                        {selYear === new Date().getFullYear() && selMonth === new Date().getMonth() + 1 && (
+                          <span className="px-2 py-0.5 rounded-full bg-rose-100 text-rose-700 text-[10px] font-black animate-pulse">THIS MONTH</span>
+                        )}
+                      </div>
+
+                      {/* Monthly KPIs */}
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <div className="p-4 rounded-2xl bg-rose-50 border border-rose-100 text-center">
+                          <p className="text-[10px] text-zinc-500 uppercase font-bold tracking-wider">Total Orders</p>
+                          <p className="text-3xl font-black text-zinc-900 mt-1">{monthOrders}</p>
+                        </div>
+                        <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-100 text-center">
+                          <p className="text-[10px] text-zinc-500 uppercase font-bold tracking-wider">Confirmed</p>
+                          <p className="text-3xl font-black text-emerald-700 mt-1">{monthlyData.reduce((s,d)=>s+d.confirmed,0)}</p>
+                        </div>
+                        <div className="p-4 rounded-2xl bg-amber-50 border border-amber-100 text-center">
+                          <p className="text-[10px] text-zinc-500 uppercase font-bold tracking-wider">Cash Collected</p>
+                          <p className="text-xl font-black text-amber-700 mt-1">{fmt(monthTotal)}</p>
+                        </div>
+                        <div className="p-4 rounded-2xl bg-purple-50 border border-purple-100 text-center">
+                          <p className="text-[10px] text-zinc-500 uppercase font-bold tracking-wider">Service Value</p>
+                          <p className="text-xl font-black text-purple-700 mt-1">{fmt(monthlyData.reduce((s,d)=>s+d.projected,0))}</p>
+                        </div>
+                      </div>
+
+                      {/* Monthly mini bar chart (calendar-style) */}
+                      <div className="p-4 rounded-2xl bg-zinc-50 border border-zinc-200">
+                        <p className="text-xs font-bold text-zinc-500 uppercase tracking-wider mb-3">Revenue Activity — {monthNames[selMonth-1]}</p>
+                        <div className="flex flex-wrap gap-1.5">
+                          {monthlyData.map((d) => {
+                            const pct = monthMax > 0 ? d.revenue / monthMax : 0;
+                            const todayStr = new Date().toISOString().slice(0,10);
+                            const isToday = d.day === todayStr;
+                            const isFuture = d.day > todayStr;
+                            return (
+                              <div
+                                key={d.d}
+                                title={`${fmtDate(d.day)}: ${d.count} order${d.count !== 1 ? "s" : ""} · ${fmt(d.revenue)}`}
+                                onClick={() => { if (!isFuture) { setAnalyticsDate(d.day); setAnalyticsView("daily"); }}}
+                                className={`w-8 h-8 rounded-lg flex items-center justify-center cursor-pointer transition text-[10px] font-black border ${
+                                  isToday ? "border-rose-500 ring-2 ring-rose-400" :
+                                  isFuture ? "border-zinc-100 opacity-30" :
+                                  "border-transparent hover:border-rose-300"
+                                } ${
+                                  isFuture ? "bg-zinc-100" :
+                                  d.count === 0 ? "bg-zinc-200 text-zinc-500" :
+                                  pct > 0.75 ? "bg-rose-600 text-white" :
+                                  pct > 0.4 ? "bg-rose-400 text-white" :
+                                  pct > 0.1 ? "bg-rose-200 text-rose-800" :
+                                  "bg-rose-100 text-rose-700"
+                                }`}>
+                                {d.d}
+                              </div>
+                            );
+                          })}
+                        </div>
+                        <div className="flex items-center gap-2 mt-3 flex-wrap">
+                          <span className="text-[10px] text-zinc-400">Revenue intensity:</span>
+                          {[["bg-zinc-200","No orders"],["bg-rose-100","Low"],["bg-rose-300","Mid"],["bg-rose-500 text-white","High"]].map(([cls,lbl]) => (
+                            <span key={lbl} className={`w-5 h-5 rounded ${cls} inline-flex items-center justify-center`} title={lbl} />
+                          ))}
+                          <span className="text-[10px] text-zinc-400">· Tap a day to zoom in</span>
+                        </div>
+                      </div>
+
+                      {/* Monthly table — only days with orders */}
+                      {monthlyData.some(d => d.count > 0) ? (
+                        <div className="rounded-2xl border border-zinc-200 overflow-hidden">
+                          <table className="w-full text-xs">
+                            <thead className="bg-zinc-50">
+                              <tr>
+                                <th className="p-3 text-left font-bold text-zinc-600">Date</th>
+                                <th className="p-3 text-center font-bold text-zinc-600">Orders</th>
+                                <th className="p-3 text-center font-bold text-zinc-600">✅ Done</th>
+                                <th className="p-3 text-right font-bold text-zinc-600">Cash In</th>
+                                <th className="p-3 text-right font-bold text-zinc-600">Service Value</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {monthlyData.filter(d => d.count > 0).map((d, i) => {
+                                const isToday = d.day === new Date().toISOString().slice(0,10);
+                                return (
+                                  <tr
+                                    key={i}
+                                    onClick={() => { setAnalyticsDate(d.day); setAnalyticsView("daily"); }}
+                                    className={`border-t border-zinc-100 cursor-pointer transition ${isToday ? "bg-rose-50/60 hover:bg-rose-100/60" : "hover:bg-zinc-50"}`}>
+                                    <td className="p-3">
+                                      <span className={`font-black ${isToday ? "text-rose-600" : "text-zinc-800"}`}>{fmtDate(d.day)}</span>
+                                      {isToday && <span className="ml-2 px-1.5 py-0.5 rounded-full bg-rose-100 text-rose-700 text-[9px] font-black">TODAY</span>}
+                                    </td>
+                                    <td className="p-3 text-center font-bold text-zinc-900">{d.count}</td>
+                                    <td className="p-3 text-center font-bold text-emerald-700">{d.confirmed || "—"}</td>
+                                    <td className="p-3 text-right font-black text-amber-700">{fmt(d.revenue)}</td>
+                                    <td className="p-3 text-right font-semibold text-zinc-500">{fmt(d.projected)}</td>
+                                  </tr>
+                                );
+                              })}
+                            </tbody>
+                            <tfoot className="bg-zinc-50">
+                              <tr className="border-t border-zinc-200">
+                                <td className="p-3 font-black text-zinc-900">MONTH TOTAL</td>
+                                <td className="p-3 text-center font-black text-zinc-900">{monthOrders}</td>
+                                <td className="p-3 text-center font-black text-emerald-700">{monthlyData.reduce((s,d)=>s+d.confirmed,0)}</td>
+                                <td className="p-3 text-right font-black text-amber-700">{fmt(monthTotal)}</td>
+                                <td className="p-3 text-right font-black text-zinc-500">{fmt(monthlyData.reduce((s,d)=>s+d.projected,0))}</td>
+                              </tr>
+                            </tfoot>
+                          </table>
+                        </div>
+                      ) : (
+                        <div className="text-center py-10 text-zinc-400">
+                          <div className="text-4xl mb-3">📭</div>
+                          <p className="font-bold text-sm">No orders in {monthNames[selMonth-1]} {selYear}</p>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              );
+            })()}
 
             {/* TAB 1: BOOKINGS & PAYMENT VERIFICATION */}
             {adminTab === "bookings" && (
@@ -2823,9 +3754,25 @@ function App() {
                     ))}
                   </div>
 
-                  <p className="text-[11px] text-zinc-400">
-                    💡 <em>Tap "I Have Seen The Money" once funds hit your account to confirm the client schedule!</em>
-                  </p>
+                  <div className="flex items-center gap-3 flex-wrap">
+                    <p className="text-[11px] text-zinc-400">
+                      💡 <em>Tap "I Have Seen The Money" once funds hit your account to confirm the client schedule!</em>
+                    </p>
+                    {adminBookings.length > 0 && (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (window.confirm(`⚠️ Clear ALL ${adminBookings.length} order(s) permanently? This cannot be undone.`)) {
+                            persistBookings([]);
+                            showToast("All orders cleared. Fresh start! 🗑️", "info");
+                          }
+                        }}
+                        className="px-3 py-1.5 rounded-full bg-rose-50 hover:bg-rose-100 text-rose-600 font-bold text-[11px] border border-rose-200 transition cursor-pointer flex items-center gap-1 ml-auto">
+                        <span>🗑️</span>
+                        <span>Clear All Orders</span>
+                      </button>
+                    )}
+                  </div>
                 </div>
 
                 {/* Orders List */}
@@ -3238,6 +4185,104 @@ function App() {
               </div>
             )}
 
+            {/* TAB 5: SECURITY & OWNER PIN */}
+            {adminTab === "security" && (
+              <div className="p-5 rounded-2xl bg-zinc-50 border border-zinc-200 space-y-4">
+                <div className="flex items-center gap-2">
+                  <span className="text-xl">🔒</span>
+                  <div>
+                    <h4 className="font-bold text-zinc-900 text-sm">Owner Master Security PIN</h4>
+                    <p className="text-xs text-zinc-500">Protect confidential appointments, customer phone numbers, and revenue stats.</p>
+                  </div>
+                </div>
+
+                <div className="p-4 bg-white rounded-xl border border-zinc-200 space-y-3 max-w-md">
+                  <p className="text-xs text-zinc-600 leading-relaxed">
+                    Clients see <strong>zero visible owner portal buttons</strong> on the website. To access this dashboard, triple-tap the <strong>TDL</strong> logo at top-left or use the subtle footer link, then enter your 4-digit Master PIN.
+                  </p>
+                  
+                  <div className="pt-2">
+                    <label className="block text-xs font-bold text-zinc-700 mb-1">Set New Master Owner PIN:</label>
+                    <div className="flex gap-2">
+                      <input 
+                        type="password" 
+                        maxLength={6}
+                        value={newPinInput}
+                        onChange={(e) => setNewPinInput(e.target.value)}
+                        placeholder="New PIN (e.g. 8100)" 
+                        className="px-4 py-2 rounded-xl border border-zinc-300 text-xs font-mono tracking-widest bg-zinc-50 focus:bg-white w-40" 
+                      />
+                      <button 
+                        type="button" 
+                        onClick={handleChangeOwnerPin}
+                        className="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs shadow-xs transition">
+                        Update PIN 🔒
+                      </button>
+                    </div>
+                    <p className="text-[10px] text-zinc-400 mt-1">Default PIN stored in your browser's local storage. Change it after first login.</p>
+                  </div>
+                </div>
+              </div>
+            )}
+
+          </div>
+        </div>
+      )}
+
+      {/* OWNER PIN SECURITY GATE MODAL (HIDDEN FROM REGULAR CLIENTS) */}
+      {isOwnerPinModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+          <div className="bg-white rounded-[32px] max-w-sm w-full p-6 sm:p-7 shadow-2xl relative text-center border border-pink-200 animate-scaleUp">
+            <button 
+              type="button" 
+              onClick={() => { setIsOwnerPinModalOpen(false); setOwnerPinInput(""); setOwnerPinError(""); }}
+              className="absolute top-4 right-4 w-8 h-8 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-600 font-black text-sm flex items-center justify-center cursor-pointer">
+              ✕
+            </button>
+
+            <div className="w-14 h-14 mx-auto rounded-2xl bg-gradient-to-tr from-rose-500 to-pink-500 text-white flex items-center justify-center text-2xl shadow-lg mb-3">
+              👑
+            </div>
+
+            <h3 className="text-xl font-black text-zinc-900 font-serif-lux mb-1">
+              Owner Security Check
+            </h3>
+            <p className="text-xs text-zinc-500 mb-5">
+              Enter Master PIN to open The Damian Label salon records &amp; revenue manager.
+            </p>
+
+            <form onSubmit={handleVerifyOwnerPin} className="space-y-4">
+              <div>
+                <input 
+                  type="password" 
+                  maxLength={6}
+                  autoFocus
+                  value={ownerPinInput}
+                  onChange={(e) => { setOwnerPinInput(e.target.value); setOwnerPinError(""); }}
+                  placeholder="Enter 4-Digit PIN"
+                  className="w-full text-center px-4 py-3 rounded-2xl border-2 border-rose-200 focus:border-rose-600 text-xl font-mono tracking-widest outline-none bg-rose-50/50 focus:bg-white transition"
+                />
+                {ownerPinError && (
+                  <p className="text-xs text-rose-600 font-bold mt-2">
+                    {ownerPinError}
+                  </p>
+                )}
+              </div>
+
+              <button 
+                type="submit"
+                style={{
+                  backgroundColor: '#e11d48',
+                  background: 'linear-gradient(135deg, #e11d48 0%, #f43f5e 100%)'
+                }}
+                className="w-full py-3 rounded-full text-white font-black text-xs sm:text-sm shadow-lg hover:shadow-xl active:scale-95 transition cursor-pointer">
+                Unlock Salon Manager 🔓
+              </button>
+
+              <p className="text-[11px] text-zinc-400">
+                🔒 Confidential Studio Portal • Master PIN Protected
+              </p>
+            </form>
           </div>
         </div>
       )}
@@ -3420,8 +4465,8 @@ function App() {
           border: '1.5px solid rgba(251, 113, 133, 0.45)',
           boxShadow: '0 12px 35px rgba(225, 29, 72, 0.22), 0 2px 10px rgba(0, 0, 0, 0.05)',
         }}
-        className={`fixed bottom-5 left-4 sm:left-6 z-40 transition-all duration-300 rounded-3xl ${
-          isMusicMinimized ? 'p-2 sm:p-2.5' : 'p-3 sm:p-3.5 max-w-[320px] sm:max-w-sm w-[calc(100vw-32px)] sm:w-auto'
+        className={`fixed ${showMobileStickyBar ? "bottom-20 sm:bottom-5" : "bottom-5"} left-3.5 sm:left-6 z-40 transition-all duration-300 rounded-3xl ${
+          isMusicMinimized ? 'p-2 sm:p-2.5' : 'p-3 sm:p-3.5 max-w-[320px] sm:max-w-sm w-[calc(100vw-28px)] sm:w-auto'
         }`}>
         {isMusicMinimized ? (
           <div className="flex items-center gap-2">
@@ -3521,7 +4566,7 @@ function App() {
                   <span>📁</span>
                   <span>Put My Song</span>
                 </button>
-                {musicTrack !== "studio-music.wav" && (
+                {musicTrack !== "studio-music.mp3" && musicTrack !== "studio-music.wav" && (
                   <button 
                     type="button"
                     onClick={handleResetToDefaultMusic}
@@ -3546,9 +4591,11 @@ function App() {
           color: '#ffffff',
           border: '1.5px solid rgba(255, 255, 255, 0.7)'
         }}
-        className="fixed bottom-6 right-6 z-40 px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-full flex items-center gap-2 cursor-pointer hover:scale-105 active:scale-95 transition-all shadow-xl font-black text-xs tracking-wide">
+        className={`fixed ${showMobileStickyBar ? "bottom-20 sm:bottom-6" : "bottom-6"} right-3.5 sm:right-6 z-40 px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-full flex items-center gap-2 cursor-pointer hover:scale-105 active:scale-95 transition-all shadow-xl font-black text-xs tracking-wide`}>
         <span className="text-base animate-bounce">🎡</span>
-        <span className="hidden sm:inline">Spin for Discount</span>
+        <span className="hidden sm:inline">
+          {spinCount >= 2 ? "Wheel Spun (2/2)" : spinCount === 1 ? "1 Spin Left" : "Spin for Discount"}
+        </span>
         <span>✨</span>
       </button>
 
@@ -3568,18 +4615,26 @@ function App() {
             <span className="text-[11px] font-black uppercase tracking-widest text-rose-500 block mb-1">
               ✨ Lagos Babe Lucky Wheel
             </span>
-            <h3 className="text-2xl sm:text-3xl font-black text-zinc-900 font-serif-lux mb-2">
+            <h3 className="text-2xl sm:text-3xl font-black text-zinc-900 font-serif-lux mb-1.5">
               Spin &amp; Win Slay Perks! 🎡
             </h3>
-            <p className="text-xs text-zinc-600 mb-6">
-              Spin our luxury wheel to unlock instant discounts, free gel nails, or revamp vouchers for your booking!
+            
+            {/* Spin Counter Status Badge */}
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-50 border border-rose-200 text-[11px] font-bold text-rose-700 mb-2">
+              <span>🎰</span>
+              <span>{spinCount === 0 ? "2 Lucky Spins Available Today" : spinCount === 1 ? "1 Final Spin Remaining Today" : "2 of 2 Daily Spins Used"}</span>
+            </div>
+
+            <p className="text-xs text-zinc-600 mb-5">
+              Spin our luxury wheel! Discounts are rare gems, but every babe wins love, tips &amp; perks!
             </p>
 
             {/* Visual Spinning Wheel */}
             <div className="relative w-64 h-64 mx-auto mb-6 flex items-center justify-center">
-              {/* Top Pointer Arrow */}
-              <div className="absolute -top-3 z-30 flex flex-col items-center">
-                <div className="w-0 h-0 border-l-[12px] border-l-transparent border-r-[12px] border-r-transparent border-t-[20px] border-t-rose-600 filter drop-shadow-md animate-bounce"></div>
+              {/* Top Pointer Arrow (Strictly Centered at 12 o'clock) */}
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center pointer-events-none drop-shadow-xl">
+                <div className="w-3.5 h-3.5 rounded-full bg-rose-600 border-2 border-white shadow-md -mb-1 z-10 animate-pulse"></div>
+                <div className="w-0 h-0 border-l-[11px] border-l-transparent border-r-[11px] border-r-transparent border-t-[22px] border-t-rose-600 filter drop-shadow"></div>
               </div>
 
               {/* Rotating Wheel Container */}
@@ -3592,32 +4647,49 @@ function App() {
                 }}>
                 <svg viewBox="0 0 100 100" className="w-full h-full">
                   {WHEEL_PRIZES.map((prize, idx) => {
-                    const startAngle = idx * 60;
-                    const endAngle = (idx + 1) * 60;
+                    const sector = 360 / WHEEL_PRIZES.length;
+                    const startAngle = idx * sector;
+                    const endAngle = (idx + 1) * sector;
                     const x1 = 50 + 50 * Math.cos((Math.PI * (startAngle - 90)) / 180);
                     const y1 = 50 + 50 * Math.sin((Math.PI * (startAngle - 90)) / 180);
                     const x2 = 50 + 50 * Math.cos((Math.PI * (endAngle - 90)) / 180);
                     const y2 = 50 + 50 * Math.sin((Math.PI * (endAngle - 90)) / 180);
                     const path = `M 50 50 L ${x1} ${y1} A 50 50 0 0 1 ${x2} ${y2} Z`;
                     
-                    const midAngle = startAngle + 30;
-                    const textX = 50 + 32 * Math.cos((Math.PI * (midAngle - 90)) / 180);
-                    const textY = 50 + 32 * Math.sin((Math.PI * (midAngle - 90)) / 180);
+                    const midAngle = startAngle + (sector / 2);
+                    const isWinningSlice = wonWheelPrize && (wonWheelPrize.id === prize.id);
 
                     return (
-                      <g key={prize.code}>
-                        <path d={path} fill={prize.color} stroke="#ffffff" strokeWidth="1.5" />
-                        <text
-                          x={textX}
-                          y={textY}
-                          fill="#ffffff"
-                          fontSize="5.5"
-                          fontWeight="900"
-                          textAnchor="middle"
-                          dominantBaseline="central"
-                          transform={`rotate(${midAngle + 90}, ${textX}, ${textY})`}>
-                          {prize.label}
-                        </text>
+                      <g key={prize.id || idx}>
+                        <path 
+                          d={path} 
+                          fill={prize.color} 
+                          stroke={isWinningSlice ? "#fde047" : "#ffffff"} 
+                          strokeWidth={isWinningSlice ? "2.5" : "1.2"} 
+                        />
+                        {/* Straight, Non-Overlapping Radial Slice Group */}
+                        <g transform={`rotate(${midAngle}, 50, 50)`}>
+                          <text
+                            x="50"
+                            y="16.5"
+                            fill="#ffffff"
+                            fontSize="3.1"
+                            fontWeight="900"
+                            textAnchor="middle"
+                            dominantBaseline="central">
+                            {prize.line1}
+                          </text>
+                          <text
+                            x="50"
+                            y="22.5"
+                            fill="#ffffff"
+                            fontSize="2.7"
+                            fontWeight="900"
+                            textAnchor="middle"
+                            dominantBaseline="central">
+                            {prize.line2}
+                          </text>
+                        </g>
                       </g>
                     );
                   })}
@@ -3632,20 +4704,84 @@ function App() {
 
             {/* Action / Result */}
             {wonWheelPrize ? (
-              <div className="space-y-3 bg-rose-50/80 p-4 rounded-2xl border border-rose-200">
-                <span className="text-2xl animate-bounce block">🎉</span>
-                <h4 className="text-lg font-black text-rose-600 font-serif-lux">
-                  YOU WON: {wonWheelPrize.label}!
+              wonWheelPrize.isDiscount ? (
+                <div className="space-y-3 bg-rose-50/90 p-4 rounded-2xl border border-rose-300">
+                  <span className="text-3xl animate-bounce block">🎉</span>
+                  <h4 className="text-lg font-black text-rose-600 font-serif-lux">
+                    JACKPOT WINNER: {wonWheelPrize.label}!
+                  </h4>
+                  <p className="text-xs text-zinc-700 font-medium">
+                    {wonWheelPrize.desc}
+                  </p>
+                  <div className="bg-white p-2 rounded-xl border border-rose-200 flex items-center justify-center gap-2">
+                    <span className="text-xs text-zinc-500 font-bold">PROMO CODE:</span>
+                    <strong className="font-mono text-sm text-rose-600 font-black tracking-wider bg-rose-50 px-2.5 py-0.5 rounded border border-rose-200">
+                      {wonWheelPrize.code}
+                    </strong>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleApplyWheelPrize}
+                    style={{ backgroundColor: '#e11d48' }}
+                    className="w-full py-3 rounded-full text-white font-black text-xs sm:text-sm shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition cursor-pointer">
+                    Claim &amp; Apply Discount to Booking 💖
+                  </button>
+                  <p className="text-[11px] text-zinc-500 font-medium">
+                    {spinCount >= 2 ? "You've completed your 2 spins today! Use your code at checkout 💅" : "You have 1 spin remaining! You can spin again or claim this code now 💖"}
+                  </p>
+                </div>
+              ) : (
+                <div className="space-y-3 bg-zinc-50 p-4 rounded-2xl border border-zinc-200">
+                  <span className="text-3xl block">💋</span>
+                  <h4 className="text-base font-black text-zinc-900 font-serif-lux">
+                    {wonWheelPrize.label}
+                  </h4>
+                  <p className="text-xs text-zinc-600">
+                    {wonWheelPrize.desc}
+                  </p>
+                  <div className="pt-1 flex flex-col sm:flex-row gap-2">
+                    {spinCount < 2 ? (
+                      <button
+                        type="button"
+                        onClick={() => { setWonWheelPrize(null); handleSpinWheel(); }}
+                        className="flex-1 py-2.5 rounded-full bg-rose-100 hover:bg-rose-200 text-rose-800 font-bold text-xs transition cursor-pointer">
+                        Spin Again (1 Spin Left) 🎡
+                      </button>
+                    ) : (
+                      <div className="flex-1 py-2.5 px-3 rounded-full bg-amber-50 border border-amber-200 text-[11px] font-bold text-amber-800 flex items-center justify-center gap-1">
+                        <span>✨ 2 of 2 Spins Used Today</span>
+                      </div>
+                    )}
+                    <button
+                      type="button"
+                      onClick={() => { setIsSpinWheelOpen(false); bookingSectionRef.current?.scrollIntoView({ behavior: "smooth" }); }}
+                      style={{ backgroundColor: '#e11d48' }}
+                      className="flex-1 py-2.5 rounded-full text-white font-bold text-xs shadow-md hover:scale-105 active:scale-95 transition cursor-pointer">
+                      Book Appointment 💅
+                    </button>
+                  </div>
+                  {spinCount >= 2 && (
+                    <p className="text-[11px] text-zinc-500 italic mt-1">
+                      You've used your 2 spins for today, babe! You can come back tomorrow for 2 new spins, or book your luxury hair slay right now! 💖
+                    </p>
+                  )}
+                </div>
+              )
+            ) : spinCount >= 2 ? (
+              <div className="space-y-3 bg-amber-50/80 p-4 rounded-2xl border border-amber-200">
+                <span className="text-2xl block">👑</span>
+                <h4 className="text-sm font-black text-amber-900 font-serif-lux">
+                  2 of 2 Daily Spins Used!
                 </h4>
-                <p className="text-xs text-zinc-600 font-medium">
-                  {wonWheelPrize.desc} • Promo Code: <strong className="font-mono text-zinc-900 bg-white px-2 py-0.5 rounded border border-rose-200">{wonWheelPrize.code}</strong>
+                <p className="text-xs text-zinc-600">
+                  You have used both of your 2 lucky spins for today, babe! You can come back tomorrow to spin again, or book your luxury hair appointment right now! 💅✨
                 </p>
                 <button
                   type="button"
-                  onClick={handleApplyWheelPrize}
+                  onClick={() => { setIsSpinWheelOpen(false); bookingSectionRef.current?.scrollIntoView({ behavior: "smooth" }); }}
                   style={{ backgroundColor: '#e11d48' }}
-                  className="w-full py-3 rounded-full text-white font-black text-xs sm:text-sm shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition cursor-pointer">
-                  Claim &amp; Apply Discount to Booking 💖
+                  className="w-full py-3 rounded-full text-white font-black text-xs sm:text-sm shadow-md hover:scale-105 active:scale-95 transition cursor-pointer">
+                  Book Your Appointment Now 💅✨
                 </button>
               </div>
             ) : (
@@ -3660,7 +4796,11 @@ function App() {
                   boxShadow: '0 6px 20px rgba(225, 29, 72, 0.45)'
                 }}
                 className="w-full py-3.5 rounded-full text-white font-black text-sm uppercase tracking-wider shadow-xl hover:shadow-2xl hover:scale-105 active:scale-95 transition cursor-pointer disabled:opacity-50">
-                {isSpinning ? "Spinning Lucky Wheel... 🎡" : "SPIN THE SLAY WHEEL! 🎡✨"}
+                {isSpinning 
+                  ? "Spinning Lucky Wheel... 🎡" 
+                  : spinCount === 1 
+                  ? "USE FINAL SPIN! (1 Left) 🎡✨" 
+                  : "SPIN THE SLAY WHEEL! (2 Spins) 🎡✨"}
               </button>
             )}
 

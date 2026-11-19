@@ -1,6 +1,6 @@
 const fs = require('fs');
-const babel = require('C:/Users/User/AppData/Local/Programs/Antigravity IDE/resources/app/node_modules/@babel/core');
-const presetReact = require('C:/Users/User/AppData/Local/Programs/Antigravity IDE/resources/app/node_modules/@babel/preset-react');
+const babel = require('@babel/core');
+const presetReact = require('@babel/preset-react');
 
 console.log('Compiling App.jsx to app.bundle.js...');
 
@@ -22,7 +22,10 @@ ${result.code}
 
 if (typeof ReactDOM !== 'undefined' && document.getElementById('root')) {
   const root = ReactDOM.createRoot(document.getElementById('root'));
-  root.render(React.createElement(App));
+  const WrappedApp = function() {
+    return React.createElement(AppErrorBoundary, null, React.createElement(App));
+  };
+  root.render(React.createElement(WrappedApp));
 }
 })();
 `;
